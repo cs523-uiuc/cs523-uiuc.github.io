@@ -34,6 +34,10 @@
   performance benchmarks</b> on <b>bare mental</b> and <b>two container 
   techniques</b>.
   <br><br>
+  If you design your experiment in a language with GC, please also evaluate how 
+  garbage collection might influence your experiment results. Is there a way to 
+  mitigate the impact of GC in your chosen language?
+  <br><br>
   This project has two parts. 
   First, you will implement and perform a series of experiments. 
   Second, you will write a report documenting the methodology and results of your experiments. 
@@ -68,21 +72,11 @@
   Perform your experiments by following these steps:
   <ol>
     <li>
-       Estimate the base hardware performance of the operation and cite the source 
-       you used to determine this quantity (system info, a particular document). 
-       For example, when measuring disk read performance for a particular size, 
-       you can refer to the disk specification (easily found online) to determine 
-       seek, rotation, and transfer performance. Based on these values, 
-       you can estimate the average time to read a given amount of data from 
-       the disk assuming no software overheads. For operations where the hardware 
-       performance does not apply or is difficult to measure (e.g., procedure call), 
-       state it as such.
+      Measure the bare metal performance of you chosen machine or experiment environment.
     </li>
     <li>
       Make a guess as to how much overhead software will add to the 
-      base hardware performance. For a disk read, this overhead will include 
-      the system call, arranging the read I/O operation, handling the completed 
-      read, and copying the data read into the user buffer. We will not 
+      bare metal performance. We will not 
       grade you on your guess, this is for you to test your intuition. 
       (Obviously you can do this after performing the experiment to derive 
       an accurate "guess", but where is the fun in that?) For a procedure call, 
@@ -93,11 +87,11 @@
       be introduced when performing your measurements.
     </li>
     <li>
-      Combine the base hardware performance and your estimate of software overhead 
+      Combine the bare metal performance and your estimate of software overhead 
       into an overall prediction of performance.
     </li>
     <li>
-      Implement and perform the measurement. In all cases, you should 
+      Perform your measurements on <b>at least two container techniques</b>. In all cases, you should 
       run your experiment multiple times, for long enough to obtain repeatable 
       measurements, and average the results. Also compute the standard 
       deviation across the measurements. Note that, when measuring an operation 
@@ -129,15 +123,15 @@
       <ol>
         <li>
           For measurements of single quantities (e.g., system call overhead), 
-          use a table to summarize your results. In the table report the base 
-          hardware performance, your estimate of software overhead, your prediction 
+          use a table to summarize your results. In the table report the bare metal 
+          performance, your estimate of software overhead, your prediction 
           of operation time, and your measured operation time.
         </li>
         <li>
           For measurements of operations as a function of some other quantity, 
           report your results as a graph with operation time on the y-axis and 
-          the varied quantity on the x-axis. Include your estimates of base 
-          hardware performance and overall prediction of operation time as curves 
+          the varied quantity on the x-axis. Include your estimates of bare metal 
+          performance and overall prediction of operation time as curves 
           on the graph as well.
         </li>
         <li>
