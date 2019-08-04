@@ -10,55 +10,48 @@
 </head>
 
 <body class="main">
-  <h1>CSE 523: Project - Container Measurement</h1>
+  <h1><a href="index.html">CSE 523</a>: Container Measurement Project</h1>
   <h2 class="h1sub">Fall 2019</h2>
-  <a href="index.html">home</a>/<a href="project.html">project</a>
+
   <h2>Overview</h2>
-  This project is created to deepen your understanding about application performance in 
-  cloud-native environment, you need to expose yourself to modern container techniques including
-  Docker, gVisor, Firecracker, Kata Container, etc., by measuring and comparing their performance 
-  against each other and bare metal. 
+    The project is about making sense of application performance in
+      cloud-native environment.
+      You will be creating, justifying, and applying a set of experiments
+      to characterize and understand the overhead of modern container technologies,
+      such as Docker, gVisor, Firecracker, Kata Containers.
+
   <br><br>
-  In this project, you will create, justify, and apply a set 
-  of experiments to different systems to characterize and understand their performances. In addition, you may 
-  explore the relations between some of these quantities. In doing so, you will study how to use 
-  benchmarks to usefully characterize a complex system. You should also gain an intuitive feel for 
-  the relative speeds of different basic operations, which is invaluable in identifying performance 
-  bottlenecks.
+    In this project, you will create, justify, and apply a set
+      of experiments to different systems to characterize and understand their performances. In addition, you may
+      explore the relations between some of these quantities. In doing so, you will study how to use
+      benchmarks to usefully characterize a complex system. You should also gain an intuitive feel for
+      the relative speeds of different basic operations, which is invaluable in identifying performance
+      bottlenecks.
+
   <br><br>
-  You have complete choice over the operation system and 
-  hardware platform for your measurements. You can use your 
-  laptop that you are comfortable with, an operating system 
-  running in a virtual machine monitor (a smartphone, a game 
-  system, or even a supercomputer if you know how). You need to apply <b>the same 
-  performance benchmarks</b> on <b>bare mental</b> and <b>two container 
-  techniques</b>.
-  <br><br>
-  If you design your experiment in a language with GC, please also evaluate how 
-  garbage collection might influence your experiment results. Is there a way to 
-  mitigate the impact of GC in your chosen language?
-  <br><br>
-  This project has two parts. 
-  First, you will implement and perform a series of experiments. 
-  Second, you will write a report documenting the methodology and results of your experiments. 
-  When you finish, you will submit your report as well as the code used to perform your experiments.
-  <h2>Report</h2>
-  Your report will have a number of sections including an introduction, a machine description, and descriptions and discussions of your experiments.
-  <h3>Introduction</h3>
-  Describe the goals of the project and, if you are in a group, 
-  who performed which experiments. State the language you used 
-  to implement your measurements, and the image version and optimization settings 
-  you used. If you are measuring in an unusual environment 
-  (e.g., virtual machine, embeded system, compute cloud, etc.), 
-  discuss the implications of the environment on the measurement 
-  task (e.g., additional variance that is difficult for you to control for). 
-  Estimate the amount of time you spent on this project.
-  <h3>Machine Description</h3>
-  Your report should contain a reasonably detailed description of the test machine(s). The relevant information 
-  should be available either from the system (e.g., sysctl on BSD, /proc on Linux, System Profiler 
-  on Mac OS X, the cpuid x86 instruction), or online. Gathering this information should not require 
-  much work, but in explaining and analyzing your results you will find these 
-  numbers useful. You should report at least the following quantities:
+    This project has two parts.
+      First, you will implement and perform a series of experiments.
+      Second, you will write a report documenting the methodology and results of your experiments.
+      When you finish, you will submit your report as well as the code used to perform your experiments.
+
+
+  <h2>Setup</h2>
+    You have complete choice over the operation system and
+      hardware platform for your measurements. You can use your
+      laptop that you are comfortable with, an operating system
+      running in a virtual machine monitor (a smartphone, a game
+      system, or even a supercomputer if you know how).
+      You need to apply the benchmarks on the bare mental
+      and at least two container technologies
+      (you can choose any two based on your interests).
+
+    <br><br>
+    Please decribe a reasonably detailed description of the test machine(s).
+    The relevant information should be available either from the system
+    (e.g., sysctl on BSD, /proc on Linux, System Profiler
+    on Mac OS X, the cpuid x86 instruction), or online. Gathering this information should not require
+    much work, but in explaining and analyzing your results you will find these
+    numbers useful. You should report at least the following quantities:
   <ol>
     <li>Processor: model, cycle time, cache sizes (L1, L2, instruction, data, etc.)</li>
     <li>Memory bus</li>
@@ -67,52 +60,145 @@
     <li>Disk: capacity, RPM, controller cache size</li>
     <li>Network card speed</li>
     <li>Operating system (including version/release)</li>
+    <li>Container technology (including version/release)</li>
   </ol>
-  <h3>Experiments</h3>
+
+  <h2>Experiments</h2>
+  <h3>Methodology</h3>
   Perform your experiments by following these steps:
   <ol>
     <li>
       Measure the bare metal performance of you chosen machine or experiment environment.
     </li>
     <li>
-      Make a guess as to how much overhead software will add to the 
-      bare metal performance. We will not 
-      grade you on your guess, this is for you to test your intuition. 
-      (Obviously you can do this after performing the experiment to derive 
-      an accurate "guess", but where is the fun in that?) For a procedure call, 
-      this overhead will consist of the instructions used to manage arguments 
-      and make the jump. Finally, if you are measuring a system in an 
-      unusual environment (e.g., virtual machine, compute cloud, Web 
-      browser, etc.), estimate the degree of variability and error that might 
+      Make a guess as to how much overhead software will add to the
+      bare metal performance. We will not
+      grade you on your guess, this is for you to test your intuition.
+      (Obviously you can do this after performing the experiment to derive
+      an accurate "guess", but where is the fun in that?) For a procedure call,
+      this overhead will consist of the instructions used to manage arguments
+      and make the jump. Finally, if you are measuring a system in an
+      unusual environment (e.g., virtual machine, compute cloud, Web
+      browser, etc.), estimate the degree of variability and error that might
       be introduced when performing your measurements.
     </li>
     <li>
-      Combine the bare metal performance and your estimate of software overhead 
+      Combine the bare metal performance and your estimate of software overhead
       into an overall prediction of performance.
     </li>
     <li>
-      Perform your measurements on <b>at least two container techniques</b>. In all cases, you should 
-      run your experiment multiple times, for long enough to obtain repeatable 
-      measurements, and average the results. Also compute the standard 
-      deviation across the measurements. Note that, when measuring an operation 
-      using many iterations (e.g., system call overhead), consider each run 
-      of iterations as a single trial and compute the standard deviation across 
+      Perform your measurements on <b>at least two container techniques</b>. In all cases, you should
+      run your experiment multiple times, for long enough to obtain repeatable
+      measurements, and average the results. Also compute the standard
+      deviation across the measurements. Note that, when measuring an operation
+      using many iterations (e.g., system call overhead), consider each run
+      of iterations as a single trial and compute the standard deviation across
       multiple trials (not each individual iteration).
     </li>
     <li>
-      Use a low-overhead mechanism for reading timestamps. All modern 
-      processors have a cycle counter that applications can read using a 
-      special instruction (e.g., rdtsc). Searching for "rdtsc" 
-      in Google, for instance, will provide you with a plethora of additional 
-      examples. Note, though, that in the modern age of power-efficient multicore 
-      processors, you will need to take additional steps to reliably 
-      use the cycle counter to measure the passage of time. You will want 
-      to disable dynamically adjusted CPU frequency (the mechanism will depend on 
-      your platform) so that the frequency at which the processor computes 
-      is determinstic and does not vary. Use "nice" to boost your process priority. 
+      Use a low-overhead mechanism for reading timestamps. All modern
+      processors have a cycle counter that applications can read using a
+      special instruction (e.g., rdtsc). Searching for "rdtsc"
+      in Google, for instance, will provide you with a plethora of additional
+      examples. Note, though, that in the modern age of power-efficient multicore
+      processors, you will need to take additional steps to reliably
+      use the cycle counter to measure the passage of time. You will want
+      to disable dynamically adjusted CPU frequency (the mechanism will depend on
+      your platform) so that the frequency at which the processor computes
+      is determinstic and does not vary. Use "nice" to boost your process priority.
       Restrict your measurement programs to using a single core.
     </li>
   </ol>
+
+
+  <h3>Variables</h3>
+  <ol>
+    <li>
+      <b>CPU, Scheduling, and OS Services</b>
+      <ol>
+        <li>
+          Measurement overhead: Report the overhead of reading time, and report the overhead of
+          using a loop to measure many iterations of an operation.
+        </li>
+        <li>
+          System call overhead: Report the cost of a minimal system call. Note that some operating systems will
+          cache the results of some system calls (e.g., idempotent system calls like getpid), so only the first
+          call by a process will actually trap into the OS
+        </li>
+        <li>
+          Task creation time: Report the time to create and run both a process and a kernel thread (kernel threads
+          run at user-level, but they are created and managed by the OS; e.g., pthread_create on modern Linux will
+          create a kernel-managed thread). How do they compare?
+        </li>
+        <li>
+          Context switch time: Report the time to context switch from one process to another, and from one kernel
+          thread to another. How do they compare? In the past students have found using blocking pipes to be useful
+          for forcing context switches.
+        </li>
+      </ol>
+    </li>
+    <li>
+      <b>Memory</b>
+      <ol>
+        <li>
+          RAM access time: Report latency for individual integer accesses to main memory and the L1 and L2 caches.
+          Present results as a graph with the x-axis as the log of the size of the memory region accessed, and the
+          y-axis as the average latency. Note that the
+          <a href="https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench paper</a>
+          is a good reference for this experiment. In
+          terms of the lmbench paper, measure the "back-to-back-load" latency and report your results in a graph
+          similar to Fig. 1 in the paper. You should not need to use information about the machine or the size of
+          the L1, L2, etc., caches when implementing the experiment; the experiment will reveal these sizes. In
+          your graph, label the places that indicate the different hardware regimes (L1 to L2 transition, etc.).
+        </li>
+        <li>
+          RAM bandwidth: Report bandwidth for both reading and writing. Use loop unrolling to get more accurate
+          results, and keep in mind the effects of cache line prefetching (e.g., see the lmbench paper).
+        </li>
+        <li>
+          Page fault service time: Report the time for faulting an entire page from disk (mmap is one useful
+          mechanism). Dividing by the size of a page, how does it compare to the latency of accessing a byte from
+          main memory?
+        </li>
+      </ol>
+    </li>
+    <li>
+      <b>Network</b>
+      <ol>
+        <li>
+          Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
+        </li>
+        <li>
+          Peak bandwidth.
+        </li>
+        <li>
+          Connection overhead: Report setup and tear-down.
+        </li>
+      </ol>
+      Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
+      remote and loopback results, what can you deduce about baseline network performance and the overhead of container
+      software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
+      are reasons why the TCP performance does not match bare metal performance? In describing your methodology
+      for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
+    </li>
+    <li>
+      <b>File System</b>
+      <ol>
+        <li>
+          File read time: Report for both sequential and random access as a function of file size. Discuss the sense
+          in which your "sequential" access might not be sequential. Ensure that you are not measuring cached data
+          (e.g., use the raw device interface). Report as a graph with a log/log plot with the x-axis the size of the
+          file and y-axis the average per-block time.
+        </li>
+        <li>
+          Contention: Report the average time to read one file system block of data as a function of the number of
+          processes simultaneously performing the same operation on different files on the same disk (and not in the
+          file buffer cache).
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <h2>Report</h2>
   In your report:
   <ol>
     <li>
@@ -122,27 +208,27 @@
       Present your results:
       <ol>
         <li>
-          For measurements of single quantities (e.g., system call overhead), 
-          use a table to summarize your results. In the table report the bare metal 
-          performance, your estimate of software overhead, your prediction 
+          For measurements of single quantities (e.g., system call overhead),
+          use a table to summarize your results. In the table report the bare metal
+          performance, your estimate of software overhead, your prediction
           of operation time, and your measured operation time.
         </li>
         <li>
-          For measurements of operations as a function of some other quantity, 
-          report your results as a graph with operation time on the y-axis and 
-          the varied quantity on the x-axis. Include your estimates of bare metal 
-          performance and overall prediction of operation time as curves 
+          For measurements of operations as a function of some other quantity,
+          report your results as a graph with operation time on the y-axis and
+          the varied quantity on the x-axis. Include your estimates of bare metal
+          performance and overall prediction of operation time as curves
           on the graph as well.
         </li>
         <li>
-          If you have more than one set of results in your graph, clearly paint them 
+          If you have more than one set of results in your graph, clearly paint them
           with different graphic patterns or colors, and clearly annotate them.
         </li>
         <li>
           Label your x-axis and y-axis in your graph clearly.
         </li>
         <li>
-          The scale of your graph should be carefully chosen, so that results that 
+          The scale of your graph should be carefully chosen, so that results that
           are either too big or too small do not dominate or vanishes from your graph.
         </li>
         <li>
@@ -168,96 +254,13 @@
       At the end of your report, summarize your results in a table for a complete overview.
     </li>
   </ol>
-  Do not underestimate the time it takes to describe your methodology and results.
-  <h3>Variables</h3>
-  <ol>
-    <li>
-      CPU, Scheduling, and OS Services
-      <ol>
-        <li>
-          Measurement overhead: Report the overhead of reading time, and report the overhead of 
-          using a loop to measure many iterations of an operation.
-        </li>
-        <li>
-          System call overhead: Report the cost of a minimal system call. Note that some operating systems will 
-          cache the results of some system calls (e.g., idempotent system calls like getpid), so only the first 
-          call by a process will actually trap into the OS
-        </li>
-        <li>
-          Task creation time: Report the time to create and run both a process and a kernel thread (kernel threads 
-          run at user-level, but they are created and managed by the OS; e.g., pthread_create on modern Linux will 
-          create a kernel-managed thread). How do they compare?
-        </li>
-        <li>
-          Context switch time: Report the time to context switch from one process to another, and from one kernel 
-          thread to another. How do they compare? In the past students have found using blocking pipes to be useful 
-          for forcing context switches.
-        </li>
-      </ol>
-    </li>
-    <li>
-      Memory
-      <ol>
-        <li>
-          RAM access time: Report latency for individual integer accesses to main memory and the L1 and L2 caches. 
-          Present results as a graph with the x-axis as the log of the size of the memory region accessed, and the 
-          y-axis as the average latency. Note that the 
-          <a href="https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench paper</a> 
-          is a good reference for this experiment. In 
-          terms of the lmbench paper, measure the "back-to-back-load" latency and report your results in a graph 
-          similar to Fig. 1 in the paper. You should not need to use information about the machine or the size of 
-          the L1, L2, etc., caches when implementing the experiment; the experiment will reveal these sizes. In 
-          your graph, label the places that indicate the different hardware regimes (L1 to L2 transition, etc.).
-        </li>
-        <li>
-          RAM bandwidth: Report bandwidth for both reading and writing. Use loop unrolling to get more accurate 
-          results, and keep in mind the effects of cache line prefetching (e.g., see the lmbench paper).
-        </li>
-        <li>
-          Page fault service time: Report the time for faulting an entire page from disk (mmap is one useful 
-          mechanism). Dividing by the size of a page, how does it compare to the latency of accessing a byte from 
-          main memory?
-        </li>
-      </ol>
-    </li>
-    <li>
-      Network
-      <ol>
-        <li>
-          Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
-        </li>
-        <li>
-          Peak bandwidth.
-        </li>
-        <li>
-          Connection overhead: Report setup and tear-down.
-        </li>
-      </ol>
-      Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the 
-      remote and loopback results, what can you deduce about baseline network performance and the overhead of container 
-      software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What 
-      are reasons why the TCP performance does not match bare metal performance? In describing your methodology 
-      for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
-    </li>
-    <li>
-      File System
-      <ol>
-        <li>
-          File read time: Report for both sequential and random access as a function of file size. Discuss the sense 
-          in which your "sequential" access might not be sequential. Ensure that you are not measuring cached data 
-          (e.g., use the raw device interface). Report as a graph with a log/log plot with the x-axis the size of the 
-          file and y-axis the average per-block time.
-        </li>
-        <li>
-          Contention: Report the average time to read one file system block of data as a function of the number of 
-          processes simultaneously performing the same operation on different files on the same disk (and not in the 
-          file buffer cache).
-        </li>
-      </ol>
-    </li>
-  </ol>
+
+  <h2>Reference</h2>
+
+  @Jack, please add back the references
+
   <div class="footer">
     <hr>
-    <a href="mailto:tyxu@illinois.edu">tyxu@illinois.edu</a>
+    <a href="mailto:jianyan2@illinois.edu">jianyan2@illinois.edu</a>
   </div>
-</body> 
+</body>
