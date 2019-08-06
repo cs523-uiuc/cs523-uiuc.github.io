@@ -64,8 +64,8 @@
   </ol>
 
   <h2>Experiments</h2>
-  <h3>Methodology</h3>
-  Perform your experiments by following these steps:
+  <h3>Methodology</h3> 
+  We suggest you to perform your experiments by these following steps:
   <ol>
     <li>
       Run your benchmarks on your chosen machine or experiment environment.
@@ -80,23 +80,27 @@
       and make the jump. Finally, if you are measuring a system in an
       unusual environment (e.g., virtual machine, compute cloud, Web
       browser, etc.), estimate the degree of variability and error that might
-      be introduced when performing your measurements.
+      be introduced when performing your measurements. If you think this is wasting 
+      your time, you may skip the guessing. However, knowing the underlying mechanism 
+      of your chosen container techniques is still required when you are evaluating 
+      experiment results.
     </li>
     <li>
       Combine the bare metal performance and your estimate of software overhead
-      into an overall prediction of performance.
+      into an overall prediction of performance. Skip if you don't want to guess.
     </li>
     <li>
-      Run your benchmarks on <b>at least two container techniques</b>. In all cases, you should
+      Run your benchmarks on <b>at least two container techniques</b>. We suggest that you should
       run your experiment multiple times, for long enough to obtain repeatable
       measurements, and average the results. Also compute the standard
       deviation across the measurements. Note that, when measuring an operation
       using many iterations (e.g., system call overhead), consider each run
       of iterations as a single trial and compute the standard deviation across
-      multiple trials (not each individual iteration).
+      multiple trials (not each individual iteration). If your benchmarks have done those for you, 
+      remember to find them out and show them in your report.
     </li>
     <li>
-      Use a low-overhead mechanism for reading timestamps (ignore if you are existing benchmarks). All modern
+      Use a low-overhead mechanism for reading timestamps (ignore if you use existing benchmarks). All modern
       processors have a cycle counter that applications can read using a
       special instruction (e.g., rdtsc). Searching for "rdtsc"
       in Google, for instance, will provide you with a plethora of additional
