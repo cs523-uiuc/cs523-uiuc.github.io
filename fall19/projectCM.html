@@ -46,66 +46,55 @@
       (you can choose any two based on your interests).
 
     <br><br>
-    Please decribe a reasonably detailed description of the test machine(s).
-    The relevant information should be available either from the system
+    Please decribe a reasonably detailed description of the test setup(s),
+      such as the hardware and/or the virtualized environment.
+    The hardware information should be available either from the system
     (e.g., sysctl on BSD, /proc on Linux, System Profiler
-    on Mac OS X, the cpuid x86 instruction), or online. Gathering this information should not require
+    on Mac OS X, the cpuid x86 instruction).
+    Gathering this information should not require
     much work, but in explaining and analyzing your results you will find these
-    numbers useful. You should report at least the following quantities:
-  <ol>
-    <li>Processor: model, cycle time, cache sizes (L1, L2, instruction, data, etc.)</li>
-    <li>Memory bus</li>
-    <li>I/O bus</li>
-    <li>RAM size</li>
-    <li>Disk: capacity, RPM, controller cache size</li>
-    <li>Network card speed</li>
-    <li>Operating system (including version/release)</li>
-    <li>Container technology (including version/release)</li>
-  </ol>
+    numbers useful.
 
   <h2>Experiments</h2>
-  <h3>Methodology</h3> 
-  You can come up your own experiment methods. If you are not sure, 
-  we suggest you to perform your experiments by these following steps:
+  <h3>Methodology</h3>
+  We suggest you to perform your experiments by these following steps:
   <ol>
     <li>
       Run your benchmarks on your chosen machine or experiment environment.
     </li>
     <li>
-      Make a guess as to how much overhead software will add to the
+      Make a guess as to how much overhead your system stack will add to the
       bare metal performance. We will not
       grade you on your guess, this is for you to test your intuition.
       (Obviously you can do this after performing the experiment to derive
-      an accurate "guess", but where is the fun in that?) For a procedure call,
-      this overhead will consist of the instructions used to manage arguments
-      and make the jump. Finally, if you are measuring a system in an
+      an accurate "guess", but where is the fun in that?) For a system call,
+      this overhead could come from Seccomp and LSMs.
+      If you are measuring a system in an
       unusual environment (e.g., virtual machine, compute cloud, Web
       browser, etc.), estimate the degree of variability and error that might
-      be introduced when performing your measurements. If you think this is wasting 
-      your time, you may skip the guessing. However, knowing the underlying mechanism 
-      of your chosen container techniques is still required when you are evaluating 
-      experiment results.
+      be introduced when performing your measurements.
     </li>
     <li>
       Combine the bare metal performance and your estimate of software overhead
-      into an overall prediction of performance. Skip if you don't want to guess.
+      into an overall prediction of performance.
     </li>
     <li>
-      Run your benchmarks on <b>at least two container techniques</b>. We suggest that you should
+      Run your benchmarks on at least two container techniques. We suggest that you should
       run your experiment multiple times, for long enough to obtain repeatable
       measurements, and average the results. Also compute the standard
       deviation across the measurements. Note that, when measuring an operation
       using many iterations (e.g., system call overhead), consider each run
       of iterations as a single trial and compute the standard deviation across
-      multiple trials (not each individual iteration). If your benchmarks have done those for you, 
+      multiple trials (not each individual iteration). If your benchmarks have done those for you,
       remember to find them out and show them in your report.
     </li>
     <li>
-      Use a low-overhead mechanism for reading timestamps (ignore if you use existing benchmarks). All modern
-      processors have a cycle counter that applications can read using a
-      special instruction (e.g., rdtsc). Searching for "rdtsc"
-      in Google, for instance, will provide you with a plethora of additional
-      examples. Note, though, that in the modern age of power-efficient multicore
+      If you are building your own benchmarks, use a low-overhead mechanism
+        for reading timestamps.
+        All modern processors have a cycle counter that applications can read using a
+          special instruction (e.g., RDTSC). Searching for "RDTSC"
+          in Google, for instance, will provide you with a plethora of additional
+          examples. Note, though, that in the modern age of power-efficient multicore
       processors, you will need to take additional steps to reliably
       use the cycle counter to measure the passage of time. You will want
       to disable dynamically adjusted CPU frequency (the mechanism will depend on
@@ -114,27 +103,39 @@
       Restrict your measurement programs to using a single core.
     </li>
   </ol>
-  In either way, you need to explain your methods in detail. If you are using different methods to compare different 
+  You need to explain your methods in detail to make your results interpretable.
+  If you are using different methods to compare different
   aspects, please also explain the "what" and the "why" correspondingly.
 
-  <h3>Aspects</h3>
-  Your benchmarks should cover the following <b>four aspects:</b>. 
-  <ol>
-    <li>
-      <b>CPU, Scheduling, and OS Services</b>
-    </li>
-    <li>
-      <b>Memory</b>
-    </li>
-    <li>
-      <b>Network</b>
-    </li>
-    <li>
-      <b>File System</b>
-    </li>
-  </ol>
-  If you can't or you don't want to use existing benchmarks, you could implement 
-  your own benchmarks, which are described as the followings:
+  <h3>Measures</h3>
+  You can use existing benchmarks, or build your own benchmarks to measure the
+    following four aspects of the applications:
+    <ol>
+      <li>
+        CPU, Scheduling, and OS Services
+      </li>
+      <li>
+        Memory
+      </li>
+      <li>
+        Network
+      </li>
+      <li>
+        File System
+      </li>
+    </ol>
+
+  If you choose to use an existing benchmark, you have to fully understand
+    the benchmark, including
+    the design rationale, the implementation (read the source code),
+    and the runtime behavior.
+  Running benchmarks without understanding them will not be acceptable.
+
+  <br><br>
+
+  You are highly encouraged to build your own benchmarks (either building from
+    scratch or revising existing ones).
+  The following describes a few ideas which you can start with:
   <ol>
     <li>
       <b>CPU, Scheduling, and OS Services</b>
@@ -144,7 +145,7 @@
           using a loop to measure many iterations of an operation.
         </li>
         <li>
-          Procedure call overhead: Report as a function of number of integer arguments from 0-7. 
+          Procedure call overhead: Report as a function of number of integer arguments from 0-7.
           What is the increment overhead of an argument?
         </li>
         <li>
@@ -174,9 +175,7 @@
           <a href="https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench paper</a>
           is a good reference for this experiment. In
           terms of the lmbench paper, measure the "back-to-back-load" latency and report your results in a graph
-          similar to Fig. 1 in the paper. You should not need to use information about the machine or the size of
-          the L1, L2, etc., caches when implementing the experiment; the experiment will reveal these sizes. In
-          your graph, label the places that indicate the different hardware regimes (L1 to L2 transition, etc.).
+          similar to Fig. 1 in the paper.
         </li>
         <li>
           RAM bandwidth: Report bandwidth for both reading and writing. Use loop unrolling to get more accurate
@@ -199,14 +198,14 @@
           Peak bandwidth.
         </li>
         <li>
-          Connection overhead: Report setup and tear-down.
+          Connection overhead: Report setup and tear-down. Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
+          remote and loopback results, what can you deduce about baseline network performance and the overhead of container
+          software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
+          are reasons why the TCP performance does not match bare metal performance? In describing your methodology
+          for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
         </li>
       </ol>
-      Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
-      remote and loopback results, what can you deduce about baseline network performance and the overhead of container
-      software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
-      are reasons why the TCP performance does not match bare metal performance? In describing your methodology
-      for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
+
     </li>
     <li>
       <b>File System</b>
@@ -290,24 +289,24 @@
 
   <h2>Reference</h2>
 
-  <p> 
+  <p>
     During the semester you will have read a number of papers
     describing various system measurements. You may find those papers on the reading list
     useful as references.
   </p>
 
-  <p> 
+  <p>
     In addition, other papers you may find useful for help with system
      measurement are:
   </p>
   <ul>
-  
+
   <li> John K. Ousterhout, <a class=paperlink
     href="ftp://ftp.cs.berkeley.edu/ucb/sprite/papers/benchUsenix90.ps">Why
     Aren't Operating Systems Getting Faster as Fast as Hardware?</a>,
     Proc. of USENIX Summer Conference, pp. 247-256, June 1990.
-  </li> 
-  
+  </li>
+
   <li> J. Bradley Chen, Yasuhiro Endo, Kee Chan, David Mazières,
   Antonio Dias, Margo Seltzer, and Michael D. Smith, <a class=paperlink
   href="http://portal.acm.org/ft_gateway.cfm?id=225536&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963230&CFTOKEN=30553030">The
@@ -320,8 +319,8 @@
   Portable Tools for Performance Analysis</a>, Proc. of USENIX Annual
   Technical Conference, January 1996.
   </li>
- 
-  <li> 
+
+  <li>
     Aaron B. Brown and Margo I. Seltzer, <a class=paperlink
     href="http://portal.acm.org/ft_gateway.cfm?id=258690&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963091&CFTOKEN=18253242">Operating
     system benchmarking in the wake of lmbench: a case study of the
@@ -332,19 +331,19 @@
 
   <li> John Ousterhout, <a href="https://dl.acm.org/ft_gateway.cfm?id=3213770&ftid=1981955&dwn=1&CFID=16223611&CFTOKEN=2fdff58f3568a003-1FFB1A84-D392-AB48-EAB1E6D0C0418A24">Always Measure One Level Deeper</a>, Communications of the ACM, Vol. 61, No. 7, July 2018, pp. 74&ndash;83.
   </li>
-  
+
   </ul>
-  
-  <p> 
+
+  <p>
     Finally, it goes almost without saying that you could implement all
     of your measurements. You may download a tool to perform the
-    measurements for you. You are given the power to choose whether one 
-    particular aspect is compared by your own implementation or existing 
-    benchmarks. You need to explore carefully the <b>reasons behind resulting 
-    numbers</b>, which should keep you busy. 
+    measurements for you. You are given the power to choose whether one
+    particular aspect is compared by your own implementation or existing
+    benchmarks. You need to explore carefully the <b>reasons behind resulting
+    numbers</b>, which should keep you busy.
   </p>
   <p>
-    Finally(+1), structure your paper and organize your materials according to 
+    Finally(+1), structure your paper and organize your materials according to
     your need.
   </p>
   <div class="footer">
