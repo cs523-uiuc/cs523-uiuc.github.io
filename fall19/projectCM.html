@@ -68,7 +68,7 @@
   Perform your experiments by following these steps:
   <ol>
     <li>
-      Measure the bare metal performance of you chosen machine or experiment environment.
+      Run your benchmarks on your chosen machine or experiment environment.
     </li>
     <li>
       Make a guess as to how much overhead software will add to the
@@ -87,7 +87,7 @@
       into an overall prediction of performance.
     </li>
     <li>
-      Perform your measurements on <b>at least two container techniques</b>. In all cases, you should
+      Run your benchmarks on <b>at least two container techniques</b>. In all cases, you should
       run your experiment multiple times, for long enough to obtain repeatable
       measurements, and average the results. Also compute the standard
       deviation across the measurements. Note that, when measuring an operation
@@ -96,7 +96,7 @@
       multiple trials (not each individual iteration).
     </li>
     <li>
-      Use a low-overhead mechanism for reading timestamps. All modern
+      Use a low-overhead mechanism for reading timestamps (ignore if you are existing benchmarks). All modern
       processors have a cycle counter that applications can read using a
       special instruction (e.g., rdtsc). Searching for "rdtsc"
       in Google, for instance, will provide you with a plethora of additional
@@ -111,7 +111,24 @@
   </ol>
 
 
-  <h3>Variables</h3>
+  <h3>Aspects</h3>
+  Your benchmarks should cover the following <b>four aspects:</b>. 
+  <ol>
+    <li>
+      <b>CPU, Scheduling, and OS Services</b>
+    </li>
+    <li>
+      <b>Memory</b>
+    </li>
+    <li>
+      <b>Network</b>
+    </li>
+    <li>
+      <b>File System</b>
+    </li>
+  </ol>
+  If you can't or you don't want to use existing benchmarks, you could implement 
+  your own benchmarks, which are described as the followings:
   <ol>
     <li>
       <b>CPU, Scheduling, and OS Services</b>
@@ -119,6 +136,10 @@
         <li>
           Measurement overhead: Report the overhead of reading time, and report the overhead of
           using a loop to measure many iterations of an operation.
+        </li>
+        <li>
+          Procedure call overhead: Report as a function of number of integer arguments from 0-7. 
+          What is the increment overhead of an argument?
         </li>
         <li>
           System call overhead: Report the cost of a minimal system call. Note that some operating systems will
@@ -257,7 +278,59 @@
 
   <h2>Reference</h2>
 
-  @Jack, please add back the references
+  <p> 
+    During the semester you will have read a number of papers
+    describing various system measurements. You may find those papers on the reading list
+    useful as references.
+  </p>
+
+  <p> 
+    In addition, other papers you may find useful for help with system
+     measurement are:
+  </p>
+  <ul>
+  
+  <li> John K. Ousterhout, <a class=paperlink
+    href="ftp://ftp.cs.berkeley.edu/ucb/sprite/papers/benchUsenix90.ps">Why
+    Aren't Operating Systems Getting Faster as Fast as Hardware?</a>,
+    Proc. of USENIX Summer Conference, pp. 247-256, June 1990.
+  </li> 
+  
+  <li> J. Bradley Chen, Yasuhiro Endo, Kee Chan, David Mazières,
+  Antonio Dias, Margo Seltzer, and Michael D. Smith, <a class=paperlink
+  href="http://portal.acm.org/ft_gateway.cfm?id=225536&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963230&CFTOKEN=30553030">The
+  Measured Performance of Personal Computer Operating Systems</a>,
+  Proc. of ACM SOSP, pp. 299-313, December 1995.
+  </li>
+
+  <li> Larry McVoy and Carl Staelin, <a class=paperlink
+  href="http://www.usenix.org/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench:
+  Portable Tools for Performance Analysis</a>, Proc. of USENIX Annual
+  Technical Conference, January 1996.
+  </li>
+ 
+  <li> 
+    Aaron B. Brown and Margo I. Seltzer, <a class=paperlink
+    href="http://portal.acm.org/ft_gateway.cfm?id=258690&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963091&CFTOKEN=18253242">Operating
+    system benchmarking in the wake of lmbench: a case study of the
+    performance of NetBSD on the Intel x86 architecture</a>, Proc. of ACM
+      SIGMETRICS, pp. 214-224, June 1997.
+  </li>
+
+
+  <li> John Ousterhout, <a href="https://dl.acm.org/ft_gateway.cfm?id=3213770&ftid=1981955&dwn=1&CFID=16223611&CFTOKEN=2fdff58f3568a003-1FFB1A84-D392-AB48-EAB1E6D0C0418A24">Always Measure One Level Deeper</a>, Communications of the ACM, Vol. 61, No. 7, July 2018, pp. 74&ndash;83.
+  </li>
+  
+  </ul>
+  
+  <p> 
+    Finally, it goes almost without saying that you could implement all
+    of your measurements. You may download a tool to perform the
+    measurements for you. You are given the power to choose whether one 
+    particular aspect is compared by your own implementation or existing 
+    benchmarks. You need to explore carefully the <b>reasons behind resulting 
+    numbers</b>, which should keep you busy.
+  </p>
 
   <div class="footer">
     <hr>
