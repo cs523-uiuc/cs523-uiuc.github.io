@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>CS 523 -- Advanced Operating Systems (Fall 2019)</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="523_logo.png">
+</head>
+
+<body class="main">
+  <h1><a href="index.html">CSE 523</a>: Container Orchestration Comparison Project</h1>
+  <h2 class="h1sub">Fall 2019</h2>
+
+  <h2>Overview</h2>
+  This project is about making sense of container orchestration tools. You will
+  be creating, justifying, and applying a set of experiments to compare the 
+  performance and behavior of container orchestration technologies, such as 
+  Kubernetes, Docker Swarm, and Apache Mesos, <b>at extremely small scale</b>
+  <br><br>
+    This project has two parts.
+      First, you will implement and perform a series of experiments.
+      Second, you will write a report documenting the methodology and results of your experiments.
+      When you finish, you will submit your report as well as the code used to perform your experiments.
+
+  <h2>Inspiration</h2>
+  Containers and their orchestration tools are usually used at large scale for 
+  massive clusters. However, small companies may also want to embrace the cloud 
+  by initiating their internal administration environment with containers. Intuitively, 
+  running apps directly on servers might be the simplest choise. However, using 
+  mature cloud management tools also have significant advantages since they provide 
+  better software reliability and opportunities to train and develop good engineers for 
+  the company. 
+  <br><br>
+  There are three kinds of container orchestration tools on the playground, which one 
+  should a company starts with? While there are many empirical evaluations online, scientific 
+  performance evaluations could hardly be seen. 
+
+  <h2>Setup</h2>
+  You have complete choice over the operation system 
+  hardware platform for your measurements. You can use your
+  laptop that you are comfortable with, an operating system
+  running in a virtual machine monitor (a smartphone, a game
+  system, or even a supercomputer if you know how).
+  You need to apply the benchmarks on at least two container orchestration
+  technologies (you can choose any two based on your interests).
+  In order to control variables, you will be mainly interacting with 
+  <b>docker container</b>.
+
+  <br><br>
+  Please decribe a reasonably detailed description of the test setup(s),
+  such as the hardware and/or the virtualized environment (e.g. docker image).
+  The hardware information should be available either from the system
+  (e.g., sysctl on BSD, /proc on Linux, System Profiler
+  on Mac OS X, the cpuid x86 instruction).
+  Gathering this information should not require
+  much work, but in explaining and analyzing your results you will find these
+  numbers useful.
+
+  <h2>Experiments</h2>
+  <h3>Methodology</h3>
+  Since this is a more opened idea, for whatever methods you decide to use, 
+  we suggest you to include the following points:
+  <ol>
+    <li>
+      Clearly define your workload. Different companies may try to utilize 
+      their internal cloud services differently. While no body knows the 
+      specifics, defining your workload helps readers to understand the 
+      domain of your analysis.
+    </li>
+    <li>
+      Clearly define your metrices and explain why they are closely related to 
+      your workload. Your metrices should be able to examine, distinguish, and 
+      find the limits for your measurement targets. 
+    </li>
+    <li>
+      Explain your results and compare them. This gives purpose to your experiments. 
+      When you get a set of numbers, you need to answer questions such as 
+      what are those numbers representing, why some features are better than others, etc. 
+    </li>
+    <li>
+      Control variables. Important.
+    </li>
+    Since we are doing experiments on specific devices, how your results can be applied 
+    to other machines with different CPU, Disk, Memory card, and network card?
+  </ol>
+
+  <h3>Measures</h3>
+  You can use existing benchmarks, or build your own benchmarks to measure the
+  following four aspects of the applications:
+  <ol>
+    <li>File system efficiency</li>
+    <li>Concurrent access</li>
+    <li>Inter-container communication</li>
+    <li>Delay on service response time</li>
+    <li>Service reliability</li>
+  </ol>
+  If you choose to use an existing benchmark, you have to fully understand
+    the benchmark, including
+    the design rationale, the implementation (read the source code),
+    and the runtime behavior.
+  Running benchmarks without understanding them will not be acceptable.
+  <h2>Report</h2>
+  In your report:
+  <ol>
+    <li>
+      Explain the differences between your chosen container orchestration tools.
+    </li>
+    <li>
+      Clearly explain the methodology of your experiment.
+    </li>
+    <li>
+      Introduce your benchmarks and explain what they are measuring.
+    </li>
+    <li>
+      Present your results:
+      <ol>
+        <li>
+          For measurements of single quantities,
+          use a table to summarize your results. In the table report the bare metal
+          performance, your estimate of software overhead, your prediction
+          of operation time, and your measured operation time.
+        </li>
+        <li>
+          For measurements of operations as a function of some other quantity,
+          report your results as a graph with operation time on the y-axis and
+          the varied quantity on the x-axis. Include your estimates of bare metal
+          performance and overall prediction of operation time as curves
+          on the graph as well.
+        </li>
+        <li>
+          If you have more than one set of results in your graph, clearly paint them
+          with different graphic patterns or colors, and clearly annotate them.
+        </li>
+        <li>
+          Label your x-axis and y-axis in your graph clearly.
+        </li>
+        <li>
+          The scale of your graph should be carefully chosen, so that results that
+          are either too big or too small do not dominate or vanishes from your graph.
+        </li>
+        <li>
+          Remember to add label and title to your graph.
+        </li>
+      </ol>
+    </li>
+    <li>
+      Discuss your results:
+      <ol>
+        <li>
+          Compare the measured performance with the predicted performance. If they are 
+          wildly different, speculate on reasons why. What may be contributing to the overhead?
+        </li>
+        <li>
+          Evaluate the success of your methodology. How accurate do you think your results are?
+        </li>
+        <li>
+          For graphs, explain any interesting features of the curves.
+        </li>
+      </ol>
+    </li>
+    <li>
+      At the end of your report, summarize your results in a table for a complete overview.
+    </li>
+  </ol>
+</body>
