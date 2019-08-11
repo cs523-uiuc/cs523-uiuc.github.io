@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>CS 523 -- Advanced Operating Systems (Fall 2019)</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="523_logo.png">
+</head>
+
+<body class="main">
+  <h1><a href="index.html">CSE 523</a>: Epoll and IOCP Comparison Project</h1>
+  <h2 class="h1sub">Fall 2019</h2>
+
+  <h2>Overview</h2>
+  This project is about making sense of two asynchronous event driven network model. You will
+  be creating, justifying, and applying a set of experiments to compare the 
+  performance and behavior of Epoll and IOCP. Epoll belongs to Linux kernel, while IOCP belongs
+  to Windows kernel.
+  <br><br>
+  This project has two parts.
+  First, you will implement and perform a series of experiments.
+  Second, you will write a report documenting the methodology and results of your experiments.
+  When you finish, you will submit your report as well as the code used to perform your experiments.
+
+  <h2>Setup</h2>
+  You have complete choice over the operation system and
+    hardware platform for your measurements. You can use your
+    laptop that you are comfortable with, an operating system
+    running in a virtual machine monitor (a smartphone, a game
+    system, or even a supercomputer if you know how).
+    You need to apply the benchmarks on both network module.
+    However, for the sake of your experiment results, ensure 
+    sufficient network capability to tell the differences.
+
+  <br><br>
+  Please decribe a reasonably detailed description of the test setup(s),
+    such as the hardware and/or the virtualized environment.
+  The hardware information should be available either from the system
+  (e.g., sysctl on BSD, /proc on Linux, System Profiler
+  on Mac OS X, the cpuid x86 instruction).
+  Gathering this information should not require
+  much work, but in explaining and analyzing your results you will find these
+  numbers useful.
+  <h2>Experiments</h2>
+  <h3>Methodology</h3>
+  We suggest you to perform your experiments by these following steps:
+  <ol>
+    <li>
+      Find or design benchmarks that can be run to test both network modules.
+    </li>
+    <li>
+      Make a guess as to how much overhead each network module will 
+      add based on your workload. We will not
+      grade you on your guess, this is for you to test your intuition.
+      (Obviously you can do this after performing the experiment to derive
+      an accurate "guess", but where is the fun in that?) 
+      If you are measuring a system in an
+      unusual environment (e.g., virtual machine, compute cloud, Web
+      browser, etc.), estimate the degree of variability and error that might
+      be introduced when performing your measurements.
+    </li>
+    <li>
+      Run your benchmarks on both network modules. We suggest that you should
+      run your experiment multiple times, for long enough to obtain repeatable
+      measurements, and average the results. Also compute the standard
+      deviation across the measurements. Note that, when measuring an operation
+      using many iterations (e.g., system call overhead), consider each run
+      of iterations as a single trial and compute the standard deviation across
+      multiple trials (not each individual iteration). If your benchmarks have done those for you,
+      remember to find them out and show them in your report.
+    </li>
+    <li>
+      If you are building your own benchmarks, use a low-overhead mechanism
+        for reading timestamps.
+        All modern processors have a cycle counter that applications can read using a
+          special instruction (e.g., RDTSC). Searching for "RDTSC"
+          in Google, for instance, will provide you with a plethora of additional
+          examples. Note, though, that in the modern age of power-efficient multicore
+      processors, you will need to take additional steps to reliably
+      use the cycle counter to measure the passage of time. You will want
+      to disable dynamically adjusted CPU frequency (the mechanism will depend on
+      your platform) so that the frequency at which the processor computes
+      is determinstic and does not vary. Use "nice" to boost your process priority.
+      Restrict your measurement programs to using a single core.
+    </li>
+  </ol>
+  You need to explain your methods in detail to make your results interpretable.
+  If you are using different methods to compare different
+  aspects, please also explain the "what" and the "why" correspondingly.
+
+  <h3>Measures</h3>
+  You can use existing benchmarks, or build your own benchmarks to measure the
+  following three aspects of the applications:
+  <ol>
+    <li>
+      CPU and Memory usage
+    </li>
+    <li>
+      Concurrent access
+    </li>
+    <li>
+      Network throughput
+    </li>
+  </ol>
+  You are very likely to build your own test server using both network modules. 
+  If you are using existing servers, please acknowledge how its implementation 
+  may influence your experiment results.
+  <h2>Report</h2>
+  In your report:
+  <ol>
+    <li>
+      Explain the differences between the two network design.
+    </li>
+    <li>
+      Clearly explain the methodology of your experiment.
+    </li>
+    <li>
+      Introduce your benchmarks and explain what they are measuring.
+    </li>
+    <li>
+      Present your results:
+      <ol>
+        <li>
+          For measurements of single quantities (e.g., system call overhead),
+          use a table to summarize your results. In the table report the bare metal
+          performance, your estimate of software overhead, your prediction
+          of operation time, and your measured operation time.
+        </li>
+        <li>
+          For measurements of operations as a function of some other quantity,
+          report your results as a graph with operation time on the y-axis and
+          the varied quantity on the x-axis. Include your estimates of bare metal
+          performance and overall prediction of operation time as curves
+          on the graph as well.
+        </li>
+        <li>
+          If you have more than one set of results in your graph, clearly paint them
+          with different graphic patterns or colors, and clearly annotate them.
+        </li>
+        <li>
+          Label your x-axis and y-axis in your graph clearly.
+        </li>
+        <li>
+          The scale of your graph should be carefully chosen, so that results that
+          are either too big or too small do not dominate or vanishes from your graph.
+        </li>
+        <li>
+          Remember to add label and title to your graph.
+        </li>
+      </ol>
+    </li>
+    <li>
+      Discuss your results:
+      <ol>
+        <li>
+          Compare the measured performance. If they are wildly different, speculate on reasons why. What may be contributing to the overhead?
+        </li>
+        <li>
+          Evaluate the success of your methodology. How accurate do you think your results are?
+        </li>
+        <li>
+          For graphs, explain any interesting features of the curves.
+        </li>
+      </ol>
+    </li>
+    <li>
+      At the end of your report, summarize your results in a table for a complete overview.
+    </li>
+  </ol>  
+</body>
