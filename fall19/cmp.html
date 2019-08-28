@@ -25,7 +25,7 @@
       You are required to answer the following high-level questions:
       <ul>
         <li>
-            Is containerized applications slower than native applications running on the bare mental?
+            Are containerized applications slower than native applications running on the bare mental?
         </li>
         <li>
             If so, where does the performance get lost, and why?
@@ -210,25 +210,6 @@
       </ol>
     </li>
     <li>
-      <b>Network</b>
-      <ol>
-        <li>
-          Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
-        </li>
-        <li>
-          Peak bandwidth.
-        </li>
-        <li>
-          Connection overhead: Report setup and tear-down. Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
-          remote and loopback results, what can you deduce about baseline network performance and the overhead of container
-          software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
-          are reasons why the TCP performance does not match bare metal performance? In describing your methodology
-          for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
-        </li>
-      </ol>
-
-    </li>
-    <li>
       <b>File System</b>
       <ol>
         <li>
@@ -243,8 +224,28 @@
           file buffer cache).
         </li>
         <li>
-          Performance of different file systems. Docker uses OverlayFS while Facebook's container uses Btrfs.
+          Performance of different file systems. <a href="https://docs.docker.com/storage/storagedriver/overlayfs-driver/">Docker
+              uses OverlayFS</a>,
+              while <a href="https://atscaleconference.com/videos/holding-it-in-scale-the-systemd-tails-on-containers-composable-services-and-runtime-fun-times/">Facebook's container uses Btrfs</a>.
           Does the choices of file system make a difference?
+        </li>
+      </ol>
+    </li>
+    <li>
+      <b>Network</b>
+      <ol>
+        <li>
+          Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
+        </li>
+        <li>
+          Peak bandwidth.
+        </li>
+        <li>
+          Connection overhead: Report setup and tear-down. Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
+          remote and loopback results, what can you deduce about baseline network performance and the overhead of container
+          software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
+          are reasons why the TCP performance does not match bare metal performance? In describing your methodology
+          for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
         </li>
       </ol>
     </li>
