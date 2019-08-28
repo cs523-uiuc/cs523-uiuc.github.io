@@ -17,13 +17,29 @@
     The project is about making sense of application performance in
       cloud-native environment.
       You will be creating, justifying, and applying a set of experiments
-      to characterize and understand the overhead of modern container technologies,
-      such as Docker, gVisor, Firecracker, Kata Containers.
+      to characterize and understand the performance overhead of modern container technologies,
+      including Docker, Rtk, gVisor, Firecracker, Kata Containers, LXC/LXD,
+      or any containers you are interested in.
 
   <br><br>
-    In this project, you will create, justify, and apply a set
-      of experiments to different systems to characterize and understand their performances. In addition, you may
-      explore the relations between some of these quantities. In doing so, you will study how to use
+      You are required to answer the following high-level questions:
+      <ul>
+        <li>
+            Is containerized applications slower than native applications running on the bare mental?
+        </li>
+        <li>
+            If so, where does the performance get lost, and why?
+        </li>
+        <li>
+            How do different container technologies compare?
+        </li>
+        <li>
+          Given that different container technologies make different design decisions,
+          what can we learn from the measurement results?
+        </li>
+      </ul>
+
+      You will study how to design and use
       benchmarks to usefully characterize a complex system. You should also gain an intuitive feel for
       the relative speeds of different basic operations, which is invaluable in identifying performance
       bottlenecks.
@@ -180,7 +196,7 @@
           <a href="https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench paper</a>
           is a good reference for this experiment. In
           terms of the lmbench paper, measure the "back-to-back-load" latency and report your results in a graph
-          similar to Fig. 1 in the paper.
+          similar to Figure 1 in the paper.
         </li>
         <li>
           RAM bandwidth: Report bandwidth for both reading and writing. Use loop unrolling to get more accurate
@@ -226,9 +242,14 @@
           processes simultaneously performing the same operation on different files on the same disk (and not in the
           file buffer cache).
         </li>
+        <li>
+          Performance of different file systems. Docker uses OverlayFS while Facebook's container uses Btrfs.
+          Does the choices of file system make a difference?
+        </li>
       </ol>
     </li>
   </ol>
+
   <h2>Report</h2>
   In your report:
   <ol>
