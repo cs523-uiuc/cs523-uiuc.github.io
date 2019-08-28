@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>CS 523 -- Advanced Operating Systems (Fall 2019)</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="523_logo.png">
+</head>
+
+<body class="main">
+  <h1><a href="index.html">CSE 523</a>: Container Measurement Project (CMP)</h1>
+  <h2 class="h1sub">Fall 2019</h2>
+
+  <h2>Overview</h2>
+    The project is about making sense of application performance in
+      cloud-native environment.
+      You will be creating, justifying, and applying a set of experiments
+      to characterize and understand the overhead of modern container technologies,
+      such as Docker, gVisor, Firecracker, Kata Containers.
+
+  <br><br>
+    In this project, you will create, justify, and apply a set
+      of experiments to different systems to characterize and understand their performances. In addition, you may
+      explore the relations between some of these quantities. In doing so, you will study how to use
+      benchmarks to usefully characterize a complex system. You should also gain an intuitive feel for
+      the relative speeds of different basic operations, which is invaluable in identifying performance
+      bottlenecks.
+
+  <br><br>
+    This project has two parts.
+      First, you will implement and perform a series of experiments.
+      Second, you will write a report documenting the methodology and results of your experiments.
+      When you finish, you will submit your report as well as the code used to perform your experiments.
+
+
+  <h2>Setup</h2>
+    You have the complete freedom to choose the OS and the
+      hardware platform for your measurements. You can use your
+      laptop that you are comfortable with, the Ubuntu in the VM assigned by
+      Engr-IT, a game system, or even a supercomputer if you know how :).
+
+      You need to apply the benchmarks on the bare mental
+      and at least two container technologies
+      (you can choose any two based on your interests), and compare
+      the performance.
+
+    <br><br>
+    Please decribe a reasonably detailed description of the test setup(s),
+      such as the hardware and/or the environment.
+    The hardware information should be available either from the system
+    (e.g., sysctl on BSD, /proc on Linux, System Profiler
+    on Mac OS X, the cpuid x86 instruction).
+    Gathering this information should not require
+    much work, but in explaining and analyzing your results you will find these
+    numbers useful.
+
+  <h2>Experiments</h2>
+  <h3>Methodology</h3>
+  We suggest you to perform your experiments by these following steps:
+  <ol>
+    <li>
+      Run your benchmarks on your chosen machine or experiment environment.
+    </li>
+    <li>
+      Make a guess as to how much overhead your system stack will add to the
+      bare metal performance. We will not
+      grade you on your guess, this is for you to test your intuition.
+      For example, for a system call,
+      this overhead could come from Seccomp and LSMs.
+      If you are measuring a system in an
+      unusual environment, estimate the degree of variability and error that might
+      be introduced when performing your measurements.
+    </li>
+    <li>
+      Combine the bare metal performance and your estimate of software overhead
+      into an overall prediction of performance.
+    </li>
+    <li>
+      Run your benchmarks. We suggest that you should
+      run your experiment multiple times, for long enough to obtain
+      <b>reproducible</b> measurement results. Report the average and
+      the standard deviation across the measurements.
+      Note that, when measuring an operation
+      using many iterations (e.g., system call overhead), consider each run
+      of iterations as a single trial and compute the standard deviation across
+      multiple trials (not each individual iteration). If your benchmarks have done those for you,
+      remember to find them out and show them in your report.
+    </li>
+    <li>
+      If you are building your own benchmarks, use a low-overhead mechanism
+        for reading timestamps.
+        All modern processors have a cycle counter that applications can read using a
+          special instruction (e.g., RDTSC). Searching for "RDTSC"
+          in Google, for instance, will provide you with a plethora of additional
+          examples. Note, though, that in the modern age of power-efficient multicore
+      processors, you will need to take additional steps to reliably
+      use the cycle counter to measure the passage of time. You will want
+      to disable dynamically adjusted CPU frequency (the mechanism will depend on
+      your platform) so that the frequency at which the processor computes
+      is determinstic and does not vary. Use `nice` to boost your process priority.
+      Restrict your measurement programs to using a single core.
+    </li>
+  </ol>
+  You need to explain your methods in detail to make your results interpretable.
+  If you are using different methods to compare different
+  aspects, please also explain the "what" and the "why" correspondingly.
+
+  <h3>Measures</h3>
+  You can use existing benchmarks, or build your own benchmarks to measure the
+    following four aspects of the applications:
+    <ol>
+      <li>
+        CPU, Scheduling, and OS Services
+      </li>
+      <li>
+        Memory
+      </li>
+      <li>
+        Network
+      </li>
+      <li>
+        File System
+      </li>
+    </ol>
+
+  <b>If you choose to use an existing benchmark, you have to fully understand
+    the benchmark, including
+    the design rationale, the implementation (read the source code!),
+    and the runtime behavior</b>.
+  Running benchmarks without understanding them will not be accepted.
+  Essentially, the goal of the project is to "understand" the details
+    of performance overhead of cloud-native container technologies,
+    instead of blindly running some benchmarks. Please read the papers in the
+    Reference section below which set up the standard of the levels of
+    understanding we are looking for.
+
+  <br><br>
+
+  You are highly encouraged to build your own benchmarks (either building from
+    scratch or revising existing ones).
+  The following describes a few ideas which you can start with:
+  <ol>
+    <li>
+      <b>CPU, Scheduling, and OS Services</b>
+      <ol>
+        <li>
+          Measurement overhead: Report the overhead of reading time counters and the overhead of
+          using a loop to measure many iterations of an operation.
+        </li>
+        <li>
+          Procedure call overhead: Report as a function of number of integer arguments from 0-7.
+          What is the increment overhead of an argument?
+        </li>
+        <li>
+          System call overhead: Report the cost of a minimal system call. Note that some operating systems will
+          cache the results of some system calls (e.g., idempotent system calls like getpid), so only the first
+          call by a process will actually trap into the OS.
+        </li>
+        <li>
+          Task creation time: Report the time to create and run both a process and a kernel thread (kernel threads
+          run at user-level, but they are created and managed by the OS; e.g., pthread_create on modern Linux will
+          create a kernel-managed thread).
+        </li>
+        <li>
+          Context switch time: Report the time to context switch from one process to another, and from one kernel
+          thread to another. In the past students have found using blocking pipes to be useful
+          for forcing context switches.
+        </li>
+      </ol>
+    </li>
+    <li>
+      <b>Memory</b>
+      <ol>
+        <li>
+          RAM access time: Report latency for individual integer accesses to main memory and the L1 and L2 caches.
+          Present results as a graph with the x-axis as the log of the size of the memory region accessed, and the
+          y-axis as the average latency. Note that the
+          <a href="https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench paper</a>
+          is a good reference for this experiment. In
+          terms of the lmbench paper, measure the "back-to-back-load" latency and report your results in a graph
+          similar to Fig. 1 in the paper.
+        </li>
+        <li>
+          RAM bandwidth: Report bandwidth for both reading and writing. Use loop unrolling to get more accurate
+          results, and keep in mind the effects of cache line prefetching (e.g., see the lmbench paper).
+        </li>
+        <li>
+          Page fault service time: Report the time for faulting an entire page from disk (mmap is one useful
+          mechanism). Dividing by the size of a page, how does it compare to the latency of accessing a byte from
+          main memory?
+        </li>
+      </ol>
+    </li>
+    <li>
+      <b>Network</b>
+      <ol>
+        <li>
+          Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
+        </li>
+        <li>
+          Peak bandwidth.
+        </li>
+        <li>
+          Connection overhead: Report setup and tear-down. Evaluate for the TCP protocol. For each quantity, compare both remote and loopback interfaces. Comparing the
+          remote and loopback results, what can you deduce about baseline network performance and the overhead of container
+          software? For both round trip time and bandwidth, how close to bare metal performance do you achieve? What
+          are reasons why the TCP performance does not match bare metal performance? In describing your methodology
+          for the remote case, either provide a machine description for the second machine (as above), or use two identical machines.
+        </li>
+      </ol>
+
+    </li>
+    <li>
+      <b>File System</b>
+      <ol>
+        <li>
+          File read time: Report for both sequential and random access as a function of file size. Discuss the sense
+          in which your "sequential" access might not be sequential. Ensure that you are not measuring cached data
+          (e.g., use the raw device interface). Report as a graph with a log/log plot with the x-axis the size of the
+          file and y-axis the average per-block time.
+        </li>
+        <li>
+          Contention: Report the average time to read one file system block of data as a function of the number of
+          processes simultaneously performing the same operation on different files on the same disk (and not in the
+          file buffer cache).
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <h2>Report</h2>
+  In your report:
+  <ol>
+    <li>
+      Explain the differences between your chosen container techniques.
+    </li>
+    <li>
+      Clearly explain the methodology of your experiment.
+    </li>
+    <li>
+      Introduce your benchmarks and explain what they are measuring.
+    </li>
+    <li>
+      Present your results:
+      <ol>
+        <li>
+          For measurements of single quantities (e.g., system call overhead),
+          use a table to summarize your results. In the table report the bare metal
+          performance, your estimate of software overhead, your prediction
+          of operation time, and your measured operation time.
+        </li>
+        <li>
+          For measurements of operations as a function of some other quantity,
+          report your results as a graph with operation time on the y-axis and
+          the varied quantity on the x-axis. Include your estimates of bare metal
+          performance and overall prediction of operation time as curves
+          on the graph as well.
+        </li>
+        <li>
+          If you have more than one set of results in your graph, clearly paint them
+          with different graphic patterns or colors, and clearly annotate them.
+        </li>
+        <li>
+          Label your x-axis and y-axis in your graph clearly.
+        </li>
+        <li>
+          The scale of your graph should be carefully chosen, so that results that
+          are either too big or too small do not dominate or vanishes from your graph.
+        </li>
+        <li>
+          Remember to add label and title to your graph.
+        </li>
+      </ol>
+    </li>
+    <li>
+      Discuss your results:
+      <ol>
+        <li>
+          Compare the measured performance with the predicted performance. If they are wildly different, speculate on reasons why. What may be contributing to the overhead?
+        </li>
+        <li>
+          Evaluate the success of your methodology. How accurate do you think your results are?
+        </li>
+        <li>
+          For graphs, explain any interesting features of the curves.
+        </li>
+      </ol>
+    </li>
+    <li>
+      At the end of your report, summarize your results in a table for a complete overview.
+    </li>
+  </ol>
+
+  <h2>Reference</h2>
+
+  <p>
+    During the semester you will have read a number of papers
+    describing various system measurements. You may find those papers on the reading list
+    useful as references.
+  </p>
+
+  <p>
+    In addition, other papers you may find useful for help with system
+     measurement are:
+  </p>
+  <ul>
+
+  <li> John K. Ousterhout, <a class=paperlink
+    href="ftp://ftp.cs.berkeley.edu/ucb/sprite/papers/benchUsenix90.ps">Why
+    Aren't Operating Systems Getting Faster as Fast as Hardware?</a>,
+    Proc. of USENIX Summer Conference, pp. 247-256, June 1990.
+  </li>
+
+  <li> J. Bradley Chen, Yasuhiro Endo, Kee Chan, David Mazières,
+  Antonio Dias, Margo Seltzer, and Michael D. Smith, <a class=paperlink
+  href="http://portal.acm.org/ft_gateway.cfm?id=225536&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963230&CFTOKEN=30553030">The
+  Measured Performance of Personal Computer Operating Systems</a>,
+  Proc. of ACM SOSP, pp. 299-313, December 1995.
+  </li>
+
+  <li> Larry McVoy and Carl Staelin, <a class=paperlink
+  href="http://www.usenix.org/publications/library/proceedings/sd96/full_papers/mcvoy.pdf">lmbench:
+  Portable Tools for Performance Analysis</a>, Proc. of USENIX Annual
+  Technical Conference, January 1996.
+  </li>
+
+  <li>
+    Aaron B. Brown and Margo I. Seltzer, <a class=paperlink
+    href="http://portal.acm.org/ft_gateway.cfm?id=258690&type=pdf&coll=GUIDE&dl=GUIDE&CFID=38963091&CFTOKEN=18253242">Operating
+    system benchmarking in the wake of lmbench: a case study of the
+    performance of NetBSD on the Intel x86 architecture</a>, Proc. of ACM
+      SIGMETRICS, pp. 214-224, June 1997.
+  </li>
+
+
+  <li> John Ousterhout, <a href="https://dl.acm.org/ft_gateway.cfm?id=3213770&ftid=1981955&dwn=1&CFID=16223611&CFTOKEN=2fdff58f3568a003-1FFB1A84-D392-AB48-EAB1E6D0C0418A24">Always Measure One Level Deeper</a>, Communications of the ACM, Vol. 61, No. 7, July 2018, pp. 74&ndash;83.
+  </li>
+
+  </ul>
+
+  <p>
+    Finally, it goes almost without saying that you could implement all
+    of your measurements. You may download a tool to perform the
+    measurements for you. You are given the power to choose whether one
+    particular aspect is compared by your own implementation or existing
+    benchmarks. You need to explore carefully the <b>reasons behind resulting
+    numbers</b>, which should keep you busy.
+  </p>
+  <p>
+    Finally(+1), structure your paper and organize your materials according to
+    your need.
+  </p>
+
+  <h2>Acknowledgement</h2>
+
+  <p>
+    CMP is designed based on the Operating System Measurement project of
+    CSE 221 taught by Professors Geoff Voelker, Yuanyuan Zhou, and Stefan Savage
+    at University of California San Diego.
+  </p>
+
+  <div class="footer">
+    <hr>
+    <a href="mailto:jianyan2@illinois.edu">jianyan2@illinois.edu</a>
+  </div>
+</body>
