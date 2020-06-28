@@ -6,14 +6,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>CS 523 -- Advanced Operating Systems</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="readings.css">
-    <link rel="icon" href="523_logo.png">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../readings.css">
+    <link rel="icon" href="../523_logo.png">
 </head>
 
 <body class="main">
 
-    <h1><a class="paperlink" href="index.html" target="_blank">CS 523</a>: Schedule and Readings (Tentative)</h1>
+    <h1><a class="paperlink" href="index.html" target="_blank">CS 523</a>: Schedule and Readings</h1>
     <h2 class="h1sub">Fall 2019</h2>
 
     <center>
@@ -38,6 +38,7 @@
                     <td>Week 13</td>
                     <td>Week 14</td>
                     <td>Week 15</td>
+                    <td>Week 16</td>
                 </tr>
 
                 <tr align="center">
@@ -100,6 +101,11 @@
                         <a href="#12wed">11/13</a>
                         <br>
                         <a href="#12fri">11/15</a>
+                    </td>
+                    <td>
+                        <a href="#13wed">11/20</a>
+                        <br>
+                        <a href="#13fri">11/22</a>
                     </td>
                     <td>
                         Fall
@@ -408,6 +414,13 @@
                               <p></p>
                             </li>
                             <ul>
+                                <li> S. Park, Y. Zhou, W. Xiong, Z. Yin, R. Kaushik, K. H. Lee, and S. Lu,
+                                    <a class="paperlink" href="http://opera.ucsd.edu/paper/pres-sosp09.pdf" target="_blank">PRES: 
+                                        Probabilistic Replay with Execution Sketching on Multiprocessors</a>,
+                                      In Proceedings of the 22nd ACM Symposium on Operating Systems Principles (SOSP '09),
+                                      October 2009.
+                                  <p></p>
+                                </li>
                                 <li> W. Xiong, S. Park, J. Zhang, Y. Zhou, and Z. Ma,
                                     <a class="paperlink" href="https://www.usenix.org/legacy/events/osdi10/tech/full_papers/Xiong.pdf" target="_blank">Ad
                                       Hoc Synchronization Considered Harmful</a>,
@@ -466,32 +479,6 @@
                   <td class="date"><a name="5fri">Fri<br>9/27</a></td>
                   <td class="papers">
                       <ul>
-                          <li> T. E. Anderson, B. N. Bershad, E. D. Lazowska, H. M. Levy,
-                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=121151" target="_blank">Scheduler
-                                Activations: Effective Kernel Support for the User-level Management of Parallelism</a>,
-                              In Proceedings of the 13th ACM Symposium on Operating Systems Principles (SOSP '91),
-                              September 1991.
-                                <p></p>
-                          </li>
-                          <li> J-P. Lozi, B. Lepers, J. Funston, F. Gaud, V. Quéma, and A. Fedorova,
-                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2901326" target="_blank">The
-                                Linux Scheduler: a Decade of Wasted Cores</a>,
-                              In Proceedings of the 11th European Conference on Computer Systems (EuroSys '16), April 2016.
-                                <p></p>
-                          </li>
-                      </ul>
-                  </td>
-              </tr>
-            </tbody>
-        </table>
-
-              <table>
-                  <tbody>
-
-                <tr>
-                    <td class="date"><a name="6wed">Wed<br>10/2</a></td>
-                    <td class="papers">
-                        <ul>
                             <li> C. A. Waldspurger and W. E. Weihl,
                               <a class="paperlink" href="https://www.usenix.org/legacy/publications/library/proceedings/osdi/full_papers/waldspurger.pdf" target="_blank">Lottery
                                 Scheduling: Flexible Proportional-Share Resource Management</a>,
@@ -499,16 +486,61 @@
                               November 1994.
                                   <p></p>
                                   <ul>
+                                      <li> C. A. Waldspurger and W. E. Weihl,
+                                        <a class="paperlink" href="http://www.waldspurger.org/carl/papers/stride-mit-tm528.pdf" target="_blank">Stride Scheduling:
+                                          Deterministic Proportional-Share Resource Management</a>,
+                                          Technical Memorandum MIT/LCS/TM-528, June 1995.
+                                        <p></p>
+                                      </li>
                                       <li> D. Petrou, J. W. Milford, G. A. Gibson,
                                         <a class="paperlink" href="https://www.usenix.org/legacy/publications/library/proceedings/usenix99/full_papers/petrou/petrou.pdf" target="_blank">Implementing Lottery Scheduling:
                                           Matching the Specializations in Traditional Schedulers</a>,
-                                          In Proceedings of the USENIX Annual Technical Conference, 1999.
+                                          In Proceedings of the USENIX Annual Technical Conference, June 1999.
                                         <p></p>
                                       </li>
                                   </ul>
                             </li>
-                            <li> TBD
-                                  <p></p>
+                            <li> J-P. Lozi, B. Lepers, J. Funston, F. Gaud, V. Quéma, and A. Fedorova,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2901326" target="_blank">The
+                                Linux Scheduler: a Decade of Wasted Cores</a>,
+                              In Proceedings of the 11th European Conference on Computer Systems (EuroSys '16), April 2016.
+                                <p></p>
+                                <ul>
+                                      <li> M. Jones,
+                                        <a class="paperlink" href="http://pages.cs.wisc.edu/~remzi/OSTEP/Citations/inside-cfs.pdf" target="_blank">Inside the Linux 2.6 Completely Fair Scheduler</a>,
+                                          IBM Tutorial, September 2018.
+                                        <p></p>
+                                      </li>
+                               </ul>
+                          </li>
+                      </ul>
+                  </td>
+              </tr>
+            </tbody>
+        </table>
+
+        <h2>Process and Thread</h2>
+
+        <table>
+                  <tbody>
+
+                <tr>
+                    <td class="date"><a name="6wed">Wed<br>10/2</a></td>
+                    <td class="papers">
+                        <ul>
+                            <li> T. E. Anderson, B. N. Bershad, E. D. Lazowska, H. M. Levy,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=121151" target="_blank">Scheduler
+                                Activations: Effective Kernel Support for the User-level Management of Parallelism</a>,
+                              In Proceedings of the 13th ACM Symposium on Operating Systems Principles (SOSP '91),
+                              September 1991.
+                                <p></p>
+                            </li>
+                            <li> J. Litton, A. Vahldiek-Oberwagner, E. Elnikety, D. Garg, B. Bhattacharjee, and Peter Druschel,
+                              <a class="paperlink" href="https://www.usenix.org/conference/osdi16/technical-sessions/presentation/litton" target="_blank">Light-weight Contexts: 
+                                  An OS Abstraction for Safety and Performance</a>,
+                              In Proceedings of the 12th USENIX Symposium on Operating Systems Design and Implementation (OSDI '16).
+                              November 2016.
+                                <p></p>
                             </li>
                         </ul>
                     </td>
@@ -525,22 +557,24 @@
                     <td class="date"><a name="6fri">Fri<br>10/4</a></td>
                     <td class="papers">
                         <ul>
-                            <li> A. Bensoussan, C. T. Clingen, and R. C. Daley,
-                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=361306" target="_blank">The
-                                Multics Virtual Memory: Concepts and Design</a>,
-                              In Proceedings of the 2nd ACM Symposium on Operating Systems Principles (SOSP '69), October 1969.
-                              <p></p>
-                            </li>
                             <li> H. M. Levy and P. Lipman,
                                 <a class="paperlink" href="https://ieeexplore.ieee.org/document/1653971" target="_blank">Virtual Memory
                                   Management in VAX/VMS Operating System</a>, IEEE Computer, Vol. 15, No. 3, March 1982, pp. 35-41.
                              <p></p>
+                             </li>
                              <li> R. Rashid, A. Tevanian, M. Young, D. Golub, R. Baronn, D. Black, W. Bolosky, and J. Chew,
                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=36181" target="_blank">Machine-Independent
                                 Virtual Memory Management for Paged Uniprocessor and Multiprocessor Architectures</a>,
                                 In Proceedings of the 2nd International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '87), October 1987.
                                    <p></p>
-                             </li>
+                                   <ul>
+                                       <li> A. Bensoussan, C. T. Clingen, and R. C. Daley,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=361306" target="_blank">The
+                                Multics Virtual Memory: Concepts and Design</a>,
+                              In Proceedings of the 2nd ACM Symposium on Operating Systems Principles (SOSP '69), October 1969.
+                              <p></p>
+                            </li>
+                                   </ul>
                              </li>
                         </ul>
                     </td>
@@ -551,10 +585,10 @@
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="7wed">Wed<br>10/11</a></td>
+                    <td class="date"><a name="7wed">Wed<br>10/9</a></td>
                     <td class="papers">
                         <ul>
-                            <li>M. Talluri, 	M. D. Hill, and Y. A. Khalidi,
+                            <li>M. Talluri, M. D. Hill, and Y. A. Khalidi,
                                 <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=224071" target="_blank">A New Page Table
                                   for 64-bit Address Spaces</a>,
                                   In Proceedings of the 15th ACM Symposium on Operating Systems Principles (SOSP '95), December 1995.
@@ -579,6 +613,21 @@
             </tbody>
         </table>
 
+        <h2>Hack Day</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="7fri">Fri<br>10/11</a></td>
+                    <td class="papers">
+                        <ul>
+                            Please focus on your Checkpoint #1
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Memory Management (Cont.)</h2>
         <table>
             <tbody>
                 <tr>
@@ -593,7 +642,7 @@
                               <ul>
                                   <li> J. Gandhi, A. Basu, M. D Hill, and M. M. Swift,
                                     <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2742173" target="_blank">Efficient Memory Virtualization: Reducing Dimensionality of Nested Page Walks</a>,
-                                      In Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO-47), December 2014.
+                                      In Proceedings of the 47th Annual IEEE/ACM International Symposium on sfarchitecture (MICRO-47), December 2014.
                                     <p></p>
                                   </li>
                               </ul>
@@ -605,7 +654,7 @@
                              <p></p>
                              <ul>
                                  <li> J. Navarro, S. Iyer, P. Druschel, and A. Cox,
-                                   <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2901456" target="_blank">Practical, transparent operating system support for superpages</a>,
+                                   <a class="paperlink" href="https://www.usenix.org/legacy/events/osdi02/tech/full_papers/navarro/navarro.pdf" target="_blank">Practical, transparent operating system support for superpages</a>,
                                      In Proceedings of the 5th USENIX Symposium on Operating Systems Design and Implementation (OSDI '02), December 2002.
                                    <p></p>
                                  </li>
@@ -635,56 +684,41 @@
                             In Proceedings of the 19th Symposium on Operating System Principles (SOSP '03), October 2003.
                                 <p></p>
                           </li>
-                          <li> K. Adams and O. Agesen,
-                            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1168860" target="_blank">A Comparison of Software and Hardware Techniques for x86 Virtualization</a>,
-                            In Proceedings of the 12th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '06),
-                            October 2006.
+                          <li> E. Manco, C. Lupu, F. Schmidt, J. Mendes, S. Mendes,
+                                 S. Sati, K. Yasukata, C. Raiciu, and F. Huici,
+                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=3132763" target="_blank">My
+                                  VM is Lighter (and Safer) than your Container</a>,
+                                  In Proceedings of the 26th Symposium on Operating Systems Principles (SOSP '17), October 2017.
                                 <p></p>
-                          </li>
+                                <ul>
+                                    <li> K. Adams and O. Agesen,
+                                        <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1168860" target="_blank">A Comparison of Software and Hardware Techniques for x86 Virtualization</a>,
+                                        In Proceedings of the 12th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '06),
+                                        October 2006.
+                                        <p></p>
+                                    </li>
+                                    <li> S. Soltesz, H. Pötzl, M. E. Fiuczynski, A. Bavier, and L. Peterson,
+                                        <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1273025" target="_blank">Container-based
+                                        Operating System Virtualization:
+                                        A Scalable, High-performance Alternative to Hypervisors</a>,
+                                        In Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems (EuroSys '07), March 2007.
+                                        <p></p>
+                                    </li>
+                                </ul>
+                           </li>
+                          
                       </ul>
                   </td>
               </tr>
           </tbody>
       </table>
 
-        <table>
-            <tbody>
-                <tr>
-                    <td class="date"><a name="9wed">Wed<br>10/23</a></td>
-                    <td class="papers">
-                        <ul>
-                            <li> E. Manco, C. Lupu, F. Schmidt, J. Mendes, S. Mendes,
-                                 S. Sati, K. Yasukata, C. Raiciu, and F. Huici,
-                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=3132763" target="_blank">My
-                                  VM is Lighter (and Safer) than your Container</a>,
-                                  In Proceedings of the 26th Symposium on Operating Systems Principles (SOSP '17), October 2017.
-                                <p></p>
-                            </li>
-                            <li> S. Soltesz, H. Pötzl, M. E. Fiuczynski, A. Bavier, and L. Peterson,
-                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1273025" target="_blank">Container-based
-                                  Operating System Virtualization:
-                                  A Scalable, High-performance Alternative to Hypervisors</a>,
-                                  In In Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems (EuroSys '07), March 2007.
-                                  <p></p>
-                            </li>
-                            <li> Z. Shen, Z. Sun, G-E. Sela, E. Bagdasaryan, C. Delimitrou, R. V. Renesse, and H. Weatherspoon,
-                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=3304016" target="_blank">X-Containers:
-                                  Breaking Down Barriers to Improve Performance and Isolation of Cloud-Native Containers</a>,
-                                  In Proceedings of the 24th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '19), April 2019.
-                                  <p></p>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
         <h2>Storage and File Systems</h2>
 
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="9fri">Fri<br>10/25</a></td>
+                    <td class="date"><a name="9wed">Wed<br>10/23</a></td>
                     <td class="papers">
                         <ul>
                             <li> M. K. McKusick, W. N. Joy, S. J. Leffler, and R. S. Fabry,
@@ -727,26 +761,10 @@
             </tbody>
         </table>
 
-        <h2>Guest Lecture</h2>
         <table>
             <tbody>
-                <tr>
-                    <td class="date"><a name="10wed">Wed<br>10/30</a></td>
-                    <td class="papers">
-                        <ul>
-                            TBA
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
-        <h2>Storage and File Systems (Cont.)</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="date"><a name="10fri">Fri<br>11/1</a></td>
+                <tr>    
+                    <td class="date"><a name="9fri">Fri<br>10/25</a></td>
                     <td class="papers">
                         <ul>
                             <li> G. R. Ganger, 	M. K. McKusick, C. A. N. Soules, and Y. N. Patt,
@@ -768,30 +786,54 @@
             </tbody>
         </table>
 
+        <h2>Hack Day</h2>
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="11wed">Wed<br>11/6</a></td>
+                    <td class="date"><a name="10wed">Wed<br>10/30</a></td>
+                    <td class="papers">
+                        <ul>
+                            Project, project, project!!
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>Storage and File Systems (Cont.)</h2>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="10fri">Fri<br>11/1</a></td>
                     <td class="papers">
                         <ul>
                             <li> S. Ghemawat, H. Gobioff, and S-T. Leung,
                                 <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=3132763" target="_blank">The Google File System</a>,
-                                  In Proceedings of the 19th ACM Symposium on Operating Systems Principles (SOSP '03), October 2003.
+                                In Proceedings of the 19th ACM Symposium on Operating Systems Principles (SOSP '03), October 2003.
                                 <p></p>
+                                <ul>
+                                    <li> M. K. McKusick and S. Quinlan,
+                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1594206" target="_blank">GFS: Evolution on Fast-forward</a>,
+                                ACM Queue, August 2009.
+                                        <p></p>
+                                    </li>
+                                  </ul>
                             </li>
-                            <li> B. Calder et al.,
+                            <li> D. Beaver, S. Kumar, H. C. Li, J. Sobel, and P. Vajgel,
+                                <a class="paperlink" href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf" target="_blank">Finding
+                                  a needle in Haystack: Facebook’s photo storage</a>,
+                                  In Proceedings of the 9th Symposium on Operating
+                                  Systems Design and Implementation (OSDI '10),
+                                  October 2010.
+                                  <p></p>
+                                  <ul>
+                                    <li> B. Calder et al.,
                                 <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2043571" target="_blank">Windows
                                   Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency</a>,
                                 In Proceedings of the 23rd ACM Symposium on Operating Systems Principles (SOSP '11),
                                 October 2011.
-                                  <p></p>
-                                  <ul>
-                                    <li> D. Beaver, S. Kumar, H. C. Li, J. Sobel, and P. Vajgel,
-                                         <a class="paperlink" href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf" target="_blank">Finding
-                                           a needle in Haystack: Facebook’s photo storage</a>,
-                                           In Proceedings of the 9th Symposium on Operating
-                                           Systems Design and Implementation (OSDI '10),
-                                           October 2010.
                                         <p></p>
                                     </li>
                                     <li> G. DeCandia, D. Hastorun, M. Jampani, G. Kakulapati, A. Lakshman, A. Pilchin,
@@ -809,69 +851,32 @@
             </tbody>
         </table>
 
-        <h2>Communication</h2>
+        <h2>Distributed Systems</h2>
 
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="11fri">Fri<br>11/8</a></td>
+                    <td class="date"><a name="11wed">Wed<br>11/6</a></td>
                     <td class="papers">
                         <ul>
-                            <li> A. D. Birrell and B. J. Nelson,
-                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=357392" target="_blank">Implementing Remote Procedure Calls</a>,
-                                ACM Transactions on Computer Systems, Vol. 2, No. 1, pp. 39-59, February 1984.
-                                <p></p>
-                            </li>
-                            <li> A. Belay, G. Prekas, A. Klimovic, S. Grossman, C. Kozyrakis, and E. Bugnion,
-                              <a class="paperlink" href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-belay.pdf" target="_blank">IX: A Protected Dataplane Operating System for High Throughput and Low Latency</a>,
-                              In Proceedings of the 11fri USENIX Symposium on Operating Systems Design and Implementation (OSDI '14),
-                              October 2014.
-                                  <p></p>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Distribution</h2>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td class="date"><a name="12wed">Wed<br>11/13</a></td>
-                    <td class="papers">
-                        <ul>
-                            <li> J. K. Ousterhout, A. R. Cerenson, F. Douglis, M. N. Nelson, and B. B. Welch,
-                              <a class="paperlink" href="https://ieeexplore.ieee.org/document/16" target="_blank">The Sprite Network Operating System</a>,
-                              IEEE Computer, Vol. 21, No. 2, February 1988, pp. 23-36.
-                                <p></p>
-                            </li>
-                            <li> D. R. Cheriton and W. Zwaenepoel,
-                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=806621" target="_blank">The Distributed V Kernel and its Performance for Diskless Workstations</a>,
-                              In Proceedings of the 9th Symposium on Operating Systems Principles (SOSP '83), November 1983.
-                                  <p></p>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td class="date"><a name="12fri">Fri<br>11/15</a></td>
-                    <td class="papers">
-                        <ul>
-                            <li> L. A. Barroso, J. Dean, and U. Hölzle,
-                                <a class="paperlink" href="https://ieeexplore.ieee.org/document/1196112" target="_blank">Web Search for a Planet: The Google Cluster Architecture</a>,
-                                IEEE Micro, March 2003, 23(2): 22–28.
-                                <p></p>
-                            </li>
                             <li> J. Dean and S. Ghemawat,
-                                <a class="paperlink" href="https://www.usenix.org/legacy/event/osdi04/tech/full_papers/dean/dean.pdf" target="_blank">MapReduce: Simplified Data Processing on Large Clusters</a>,
-                                  In Proceedings of the 6th Symposium on Operating Systems Design and Implementation (OSDI '04), December 2004.
+                              <a class="paperlink" href="https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf" target="_blank">MapReduce: Simplified Data Processing on Large Clusters,</a>,
+                              In Proceedings of the 6th Symposium on Operating System Design and Implementation (OSDI'04), December 2004.
+                                <p></p>
+                            </li>
+                            <li> F. Chang et al.,
+                              <a class="paperlink" href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf" target="_blank">BigTable: A Distributed Storage System for Structured Data</a>,
+                              In Proceedings of the 7th Symposium on Operating System Design and Implementation (OSDI'06), November 2006.
+                                  <p></p>
+                            </li>
+                            <li> <strike>J. K. Ousterhout, A. R. Cerenson, F. Douglis, M. N. Nelson, and B. B. Welch,
+                              <a class="paperlink" href="https://ieeexplore.ieee.org/document/16" target="_blank">The Sprite Network Operating System</a>,
+                              IEEE Computer, Vol. 21, No. 2, February 1988, pp. 23-36.</strike>
+                                <p></p>
+                            </li>
+                            <li> <strike>D. R. Cheriton and W. Zwaenepoel,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=806621" target="_blank">The Distributed V Kernel and its Performance for Diskless Workstations</a>,
+                              In Proceedings of the 9th Symposium on Operating Systems Principles (SOSP '83), November 1983.</strike>
                                   <p></p>
                             </li>
                         </ul>
@@ -880,24 +885,68 @@
             </tbody>
         </table>
 
-          <h2>Protection</h2>
+        <h2>Protection</h2>
 
           <table>
           <tbody>
-
                 <tr>
-                    <td class="date"><a name="14wed">Wed<br>12/4</a></td>
+                    <td class="date"><a name="11fri">Fri<br>11/8</a></td>
                     <td class="papers">
                         <ul>
                             <li> B. Lampson,
                                 <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=775265.775268" target="_blank">Protection</a>, Operating Systems Review, Vol. 8, No. 1, January 1974, pp. 18-24.
                                 <p></p>
                             </li>
-                            <li> J. H. Saltzer and M. D. Schroeder,
-                                <a class="paperlink" href="https://www.cs.virginia.edu/~evans/cs551/saltzer/" target="_blank">The Protection of Information in Computer Systems</a>,
+                            <li> J. H. Saltzer,
+                                <a class="paperlink" href="https://multicians.org/saltzer-pacisim.pdf" target="_blank">Protection and the Control of Information Sharing in Multics </a>,
                                 In Proceedings of 4th ACM Symposium on Operating System Principles (SOSP '73), October 1973.
                               <p></p>
+                                <ul>
+                                    <li> B. Lampson,
+                                        <a class="paperlink" href="https://bwlampson.site/Slides/PracticalPrinciplesSecurityAbstract.htm" target="_blank"> Practical Principles for Computer Security</a>,
+                                        August 2006.
+                                        <p></p>
+                                    </li>
+                                    <li> B. Lampson,
+                                        <a class="paperlink" href="http://sigops.org/s/conferences/sosp/2015/history/02-lampson-slides.pdf" target="_blank"> Perspectives on Security</a>,
+                                        SOSP History Day, October 2015.
+                                        <p></p>
+                                    </li>
+                                </ul>
                             </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Security (Guest Lecture)</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="12wed">Wed<br>11/13</a></td>
+                    <td class="papers">
+                        <ul>
+                            <a class="paperlink" href="http://skarlat2.web.engr.illinois.edu"/>Dimitrios Skarlatos</a> will show us how to break the security of modern computer systems from the ground up.
+                            <br>
+                            <br>
+                            D. Skarlatos, M. Yan, B. Gopireddy, R. Sprabery, J. Torrellas, and C. W. Fletcher,
+                            <a class="paperlink" href="http://skarlat2.web.engr.illinois.edu/publications/microScope_isca19.pdf" target="_blank">MicroScope: Enabling Microarchitectural Replay Attacks</a>, 
+                            In Proceedings of the 46th International Symposium on Computer Architecture (ISCA '19), June 2019. 
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Hack Day</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="12fri">Fri<br>11/15</a></td>
+                    <td class="papers">
+                        <ul>
+                            Please focus on your Checkpoint #2
                         </ul>
                     </td>
                 </tr>
@@ -909,7 +958,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="14fri">Fri<br>12/6</a></td>
+                    <td class="date"><a name="13wed">Wed<br>11/20</a></td>
                     <td class="papers">
                         <ul>
                             <li>
@@ -918,11 +967,36 @@
                                 In Proceedings of the 19th ACM Symposium on Operating Systems Principles (SOSP '03),
                                 October 2003.
                                 <p></p>
+                                <ul>
+                                    <li> A. Kadav, M. J. Renzelmann, and M. M. Swift,
+                                        <a class="paperlink" href="https://www.sigops.org/sosp/sosp09/papers/kadav-sosp09.pdf" target="_blank">Tolerating
+                                        Hardware Device Failures in Software</a>,
+                                        In Proceedings of the 22nd ACM Symposium on
+                                        Operating Systems Principles (SOSP '09),
+                                        October 2009.
+                                        <p></p>
+                                    </li>
+                                    <li> A. Kadav and M. M. Swift,
+                                        <a class="paperlink" href="http://pages.cs.wisc.edu/~swift/papers/asplos12_drivers.pdf" target="_blank">
+                                        Understanding Modern Device Drivers</a>,
+                                        In Proceedings of the 17th International Conference on Architectural
+                                        Support for Programming Languages and Operating Systems (ASPLOS '12), March, 2012.
+                                        <p></p>
+                                    </li>
+                                    <li> M. J. Renzelmann, A. Kadav, and M. M. Swift,
+                                        <a class="paperlink" href="https://www.usenix.org/node/170858" target="_blank">
+                                        SymDrive: Testing Drivers without Devices</a>,
+                                        In Proceedings of the 12th Symposium on Operating System Design
+                                        and Implementation (OSDI '12), October 2012.
+                                        <p></p>
+                                    </li>
+                                </ul>
                             </li>
-                            <li> D. Engler, D. Y. Chen, S. Hallem, A. Chou, and B. Chelf,
-                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=502041" target="_blank">Bugs
-                                as Deviant Behavior: A General Approach to Inferring Errors in Systems Code</a>,
-                              In Proceedings of the Eighteenth ACM Symposium on Operating Systems Principles (SOSP '01), October 2001.
+                            <li> F. Qin, J. Tucek, J. Sundaresan and Y. Zhou,
+                                <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1095833" target="_blank">Rx: Treating Bugs As Allergies — A Safe Method to Survive
+                                Software Failures</a>,
+                                In Proceedings of the 20th ACM Symposium on Operating Systems Principles (SOSP '05),
+                                October 2005.
                                 <p></p>
                                 <ul>
                                 <li> D. Engler, B. Chelf, A. Chou, and S. Hallem,
@@ -945,12 +1019,82 @@
             </tbody>
         </table>
 
+        <h2>Office Hour</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="13fri">Fri<br>11/22</a></td>
+                    <td class="papers">
+                        <ul>
+                            We will use the class as an office hour to discuss the course projects so that we know what to work on during the Fall break :)
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Mobile Systems</h2>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="14wed">Wed<br>12/4</a></td>
+                    <td class="papers">
+                        <ul>
+                          <li>
+                            <a class="paperlink" href="https://wenyu.io/"/>Wenyu Wang</a> will give us an overview of the Android mobile system.
+                            <p></p>
+                          </li>
+                          <li> W. Enck, P. Gilbert, B. G. Chun, L. P. Cox, J. Jung, P. McDaniel, A. N. Sheth,
+                              <a class="paperlink" href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Enck.pdf" target="_blank">TaintDroid: An Information-Flow Tracking System for Realtime Privacy Monitoring on Smartphones</a>,
+                                In Proceedings of the 9th USENIX Symposium on Operating Systems Design and Implementation (OSDI '10), October 2010.
+                              <p></p>
+                          </li>
+                          <li> J. Andrus, C. Dall, A. V. Hof, O. Laadan, and J. Nieh,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=2043574" target="_blank">Cells: A Virtual Mobile Smartphone Architecture</a>,
+                                In Proceedings of the 23th ACM Symposium on Operating Systems Principles (SOSP '11), October 2011.
+                              <p></p>
+                          </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Qual</h2>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="date"><a name="14fri">Fri<br>12/6</a></td>
+                    <td class="papers">
+                        <ul>
+                            <li> P. Efstathopoulos, M. Krohn, S. VanDeBogart, C. Frey, D. Ziegler, E. Kohler, D. Mazieres, F. M. Kaashoek, and R. Morris,
+                              <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=1095813" target="_blank">Labels and 
+                                  Event Processes in the Asbestos Operating System</a>,
+                                In Proceedings of the 20th ACM Symposium on Operating System Principles (SOSP '05),
+                                  October 2005.
+                              <p></p>
+                          </li>
+                          <li> J. Yang, P. Twohey, D. Engler, and M. Musuvathi,
+                              <a class="paperlink" href="https://www.usenix.org/legacy/events/osdi04/tech/yang/yang.pdf" target="_blank">Using Model 
+                                  Checking to Find Serious File System Errors</a>,
+                                In Proceedings of the 6th Symposium on Operating Systems Design and Implementation (OSDI '04), December 2004.
+                              <p></p>
+                          </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+
         <h2>Closing</h2>
 
         <table>
             <tbody>
                 <tr>
-                    <td class="date"><a name="15wed">Fri<br>12/11</a></td>
+                    <td class="date"><a name="15wed">Wed<br>12/11</a></td>
                     <td class="papers">
                         <ul>
                           <li> B. W. Lampson and H. E. Sturgis,
