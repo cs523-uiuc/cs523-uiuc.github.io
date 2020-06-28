@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>CS 523 -- Advanced Operating Systems (Fall 2020)</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="../523_logo.png">
+</head>
+
+<body class="main">
+
+    <h1>CS 523: Advanced Operating Systems</h1>
+    <h2 class="h1sub">Fall 2020</h2>
+
+    <p></p>
+    <dl>
+        <dt>
+          <p style="color:red;font-size:18px;">
+            <b>
+              We are actively watching the COVID-19 situation with safety as a first-class principle.
+              The course would be moved online intead of being done in a "mask-to-mask" form, if the pandemic situation does not get better.
+              The campus-level COVID-19 policy can be found at <a href="https://tianyin.github.io" target="_blank">https://covid19.illinois.edu/</a>.
+            </b>
+          </p>
+          <b>Instructor</b>
+        </dt>
+        <dd>
+            <a href="https://tianyin.github.io" target="_blank">Tianyin Xu</a>
+            <br><a href="mailto:tyxu@illinois.edu">tyxu@illinois.edu</a>
+            <br> 4108 Siebel Center
+            <p></p>
+        </dd>
+
+        <dt><b>Lectures</b></dt>
+        <dd>
+            Wed/Fri 12:30–13:45pm
+            <br>
+            1109 Siebel Center
+            <p></p>
+        </dd>
+
+        <dt><b>Teaching Assistant</b></dt>
+        <dd>
+            TBD
+            <p></p>
+        </dd>
+
+        <dt><b>Office Hours</b></dt>
+        <dd>
+            TBD
+            <p></p>
+        </dd>
+
+        <dt><b>Forums</b></dt>
+        <dd>
+          Piazza (TBD)
+        </dd>
+    </dl>
+    <h2>Course Overview</h2>
+
+    <p>
+        The purpose of this course is to teach operating system design
+        from a research point of view.
+        We will go over key topics of operating systems,
+          walk through the evolution of many different operating systems techniques,
+          and examine their usage in both important historical
+        systems and in modern systems.
+    </p>
+
+    <p>
+        We will be going over the following topics:
+        <ul>
+            <li>Historical Perspectives</li>
+            <li>Unix and Plan 9 (and MINIX and Linux)</li>
+            <li>Microkernel</li>
+            <li>Library OS</li>
+            <li>Synchronization</li>
+            <li>Scheduling</li>
+            <li>Memory Management</li>
+            <li>Virtualization</li>
+            <li>Storage and File Systems</li>
+            <li>Distributed Systems</li>
+            <li>Reliability</li>
+            <li>Security</li>
+        </ul>
+    </p>
+
+    <p>
+        This is a research-oriented seminar course with a major course project.
+    </p>
+
+    <p>
+        <b>Prerequisite:</b> CS 423, CS 425, and CS 433 (or equivalent).
+        Take the <a href="https://docs.google.com/document/d/1g2AoARPUVzMcywiZOGt4fr3AHlFGhqg-q86WYB67pbM" target="_blank">Prerequisite Quiz</a> if you are not sure.
+    </p>
+
+    <h2>Reading List</h2>
+
+    <p> The course does not have a textbook. Instead, the course material will
+      come from seminal, noteworthy, or representative research papers and articles.
+      Each lecture (except the first one) will have two assigned
+      papers to read.
+      You are expected to read these papers <i>before</i> coming to class,
+      and be prepared to discuss them. We will also list
+      recommended readings; you are encouraged to read those, but not required.
+    </p>
+
+    <ul>
+        <li>
+            <a href="readings.html" target="_blank">Schedule and Reading List</a>
+        </li>
+    </ul>
+
+    <p>
+      I highly recommend you to read <a class="paperlink" href="https://cseweb.ucsd.edu/~wgg/CSE210/howtoread.html" target="_blank">Griswold's
+      advices on how to read a research paper</a>.
+      The take-home message is that until you can answer a bunch of questions,
+      you are not done reading a paper.
+    </p>
+
+    <p>
+        I also strongly encourage you to discuss the papers with other students in
+        the class — you may have insights that others do not, and vice versa.
+        Oftentimes, students form reading groups, which I heartily encourage;
+        on the other hand, I would like to point out that
+        group discussion is not an effective substitute
+        for actually reading the paper.
+    </p>
+
+    <p>
+      If you need a textbook to review and catch background, I recommend
+      <a class="paperlink" href="http://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">the OSTEP book</a>.
+
+    </p>
+
+    <h2>Class Participation</h2>
+
+    <p>
+        Since this is a discuss-based course, class participation is required.
+        We will discuss the papers and articles that we will have all read
+        before each class. I will lead discussions by asking questions of
+        students at random in class. Note that your performance in class
+        form <b>10%</b> of your overall grade,
+        so it does matter that you both show up to class and participate in the discussion (which
+          in fact requires you to read the papers).
+        The questions are essentially in the following forms:
+    </p>
+
+    <ul>
+        <li> What problem does the paper address?</li>
+        <li> How is it different from previous work, if any?</li>
+        <li> What is the approach used to solve the problem?</li>
+        <li> How does the paper support or otherwise justify its arguments and conclusions?</li>
+        <li> Was the paper, in your judgement, successful in addressing the problem?</li>
+        <li> How can I continue this work?</li>
+    </ul>
+
+    <h2>Research Project</h2>
+
+    <p>
+        The best way to learn is by doing. You will undertake <i>your own</i> research
+        project <b>individually</b> or <b>in a group of two</b>.
+        A group with a size larger than two is not encouraged, but is possible if
+          you have a strong justification that the project needs more man-power.
+        I will provide a list of ideas to get you started thinking,
+          but I highly encourage you to pursue your own ideas
+          which typically lead to better results.
+        You will write a project report and present it at the end of the course.
+        The details of the research project is described in the following link.
+    </p>
+    <p></p>
+    <ul>
+        <li>
+            <a href="project.html" target="_blank">Project description</a>
+        </li>
+    </ul>
+
+    <p>
+        You are expected to be aware of
+        <a href="http://studentcode.illinois.edu/article1_part4_1-401.html" target="_blank">Academic
+          Integrity Guidelines</a> of the University of Illinois.
+          Any violation of the course or university policies
+          will be treated seriously, and could lead to severe repercussions.
+          Pleae don't cheat. It's not worth it.
+    </p>
+
+    <h2>Grading</h2>
+    <p>
+        There is no homework, no midterm, no final exams.
+        The course is about discussing Systems research (10%) and doing Systems research (90%).
+    </p>
+
+    <h2>Credit</h2>
+    <p>
+        This course is designed based on CSE 221 (Graduate
+        Operating Systems) taught at University of California at San Diego
+        (where I did my PhD).
+        It was my favourite course during my grad school -- I took it and TA-ed
+        for it multiple times with different professors including
+          Prof. Geoff Voelker, Prof. Yuanyuan Zhou,
+        and Prof. Stefan Savage.
+        They should take the credits for the course design.
+
+    </p>
+
+    <div class="footer">
+        <hr><a href="mailto:tyxu@illinois.edu">tyxu@illinois.edu</a>
+    </div>
+
+</body>
+
+</html>
