@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>CS 523 -- Advanced Operating Systems (Spring 2024)</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="../523_logo.png">
+</head>
+
+<body class="main">
+
+    <h1>CS 523: Advanced Operating Systems</h1>
+    <h2 class="h1sub">Spring 2025</h2>
+
+    <p></p>
+    <dl>
+        <dt>
+          <b>Instructor</b>
+        </dt>
+        <dd>
+            <a href="https://tianyin.github.io" target="_blank">Tianyin Xu</a> (<a href="mailto:tyxu@illinois.edu">tyxu@illinois.edu</a>)
+            <p></p>
+        </dd>
+
+        <dt><b>Lecture/Discussion</b></dt>
+        <dd>
+            Wed/Fri 12:30pm -- 01:45pm
+            <br>
+            101 Transportation Building 
+            <p></p>
+        </dd>
+
+        <dt><b>Teaching Assistant</b></dt>
+        <dd>
+            <a href="https://yinfangchen.github.io" target="_blank">Yinfang Chen</a> (<a href="mailto:yinfang3@illinois.edu">yinfang3@illinois.edu</a>)
+            <p></p>
+        </dd>
+
+        <dt><b>Office Hour</b></b></dt>
+        <dd>
+            Xu: Wed 01:45pm -- 2:30pm, 101 Transportation Building 
+            <br>
+            Chen: TBD
+            <p></p>
+        </dd>
+
+        <dt><b>Forums</b></dt>
+        <dd>
+          <a href="https://piazza.com/illinois/spring2025/cs523" target="_blank">Piazza</a>
+          <p></p>
+        </dd>
+
+        <dt><b>Email (for Proposal/Checkpoint/Project Submission)</b></dt>
+        <dd>
+            <a href="mailto:cs523uiuc@gmail.com">cs523uiuc@gmail.com</a>
+        </dd>
+    </dl>
+    <h2>Course Overview</h2>
+
+    <p>
+        The purpose of this course is to teach operating system design
+        from a research point of view.
+        We will go over key topics of operating systems,
+          walk through the evolution of many different operating systems techniques,
+          and examine their usage in both important historical
+        systems and in modern systems.
+    </p>
+
+    <p>
+        We will be going over the following topics:
+        <ul>
+            <li>Historical Perspectives</li>
+        <!--
+            <li>Unix and Plan 9 (and MINIX and Linux)</li>
+        -->
+            <li>Microkernel and Library OS</li>
+            <li>Synchronization</li>
+            <li>Scheduling</li>
+            <li>Memory Management</li>
+            <li>Virtualization</li>
+            <li>Storage and File Systems</li>
+        </ul>
+    </p>
+
+    <p>
+        This is a research-oriented seminar course with a major research project.
+        In short, the course is about discussing and learning (by doing!) computer systems research.
+    </p>
+
+    <p>
+        <b>Prerequisite:</b> CS 423, ECE 391, CS 425, and CS 433 (or equivalent).
+        Take the <a href="https://docs.google.com/document/d/1g2AoARPUVzMcywiZOGt4fr3AHlFGhqg-q86WYB67pbM" target="_blank">Prerequisite Quiz</a> if you are not sure.
+    </p>
+
+    <h2>Reading List</h2>
+
+    <p> The course does not have a textbook. Instead, the course material will
+      come from seminal, noteworthy, or representative research papers and articles.
+      Each lecture (except the first one) will have two assigned
+      papers to read.
+      You are expected to read these papers <i>before</i> coming to class,
+      and be prepared to discuss them. We will also list
+      recommended readings; you are encouraged to read those, but not required.
+    </p>
+
+    <ul>
+        <li>
+            <a href="readings.html" target="_blank">Schedule and Reading List</a>
+        </li>
+    </ul>
+
+    <p>
+      I highly recommend you to read <a class="paperlink" href="https://cseweb.ucsd.edu/~wgg/CSE210/howtoread.html" target="_blank">Griswold's
+      advices on how to read a research paper</a>.
+      The take-home message is that until you can answer a bunch of questions,
+      you are not done reading a paper.
+    </p>
+
+    <p>
+        I also strongly encourage you to discuss the papers with other students in
+        the class — you may have insights that others do not, and vice versa.
+        Oftentimes, students form reading groups, which I heartily encourage;
+        on the other hand, I would like to point out that
+        group discussion is not an effective substitute
+        for actually reading the paper.
+    </p>
+
+    <p>
+      If you need a textbook to review and catch background, I recommend
+      <a class="paperlink" href="http://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">the OSTEP book</a>.
+
+    </p>
+
+    <p> The following table outlines the schedule for the course.  We will
+        update it as the semester progresses.
+      
+    </p><p>
+    </p><center>
+    <table id="sched">
+  
+    <tbody><tr>
+    <th>Date</th>
+    <th>Topic</th>
+    <th>Paper</th>
+    <th>Project</th>
+    <th>Pitch</th>
+    </tr>
+  
+    <tr>
+        <td align="center">1/21</td>
+        <td>
+            <a href="https://docs.google.com/presentation/d/1hE_DNXAN-AguYkV1W83B1o8cSxBStxVcCEha_M_bw-w" target="_blank">Course Overview</a>
+        </td>
+        <td>
+            How to read papers
+        </td>
+        <td>
+            Brainstorming and teaming up
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">1/23
+        </td>
+        <td>
+            Historical Perspectives (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=363143" target="_blank">THE</a>, 
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=362278" target="_blank">Nucleus</a>
+        </td>
+        <td>
+            Brainstorming and teaming up
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">1/28</td>
+        <td>
+            Historical Perspectives (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=361271" target="_blank">TENEX</a>, 
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=364017" target="_blank">HYDRA</a>
+        </td>
+        <td>
+            Brainstorming and teaming up
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">1/30</td>
+        <td>
+            Historical Perspectives (3)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=361061" target="_blank">UNIX</a>, 
+            <a class="paperlink" href="https://www.usenix.org/legacy/publications/compsystems/1995/sum_pike.pdf" target="_blank">Plan 9</a>
+        </td>
+        <td>
+            Brainstorming and teaming up
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/4</td>
+        <td>
+            Kernel Architecture (1)
+        </td>
+        <td bgcolor="#D5FFFF"><a class="paperlink" href="https://dl.acm.org/citation.cfm?id=266660" target="_blank">L4 (qual paper)</a></td>
+        <td>
+            Brainstorming and teaming up
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/6</td>
+        <td>
+            Kernel Architecture (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=224076" target="_blank">Exokernel</a>
+        </td>
+        <td bgcolor="#FFCCCB">Proposal due: 2/9 11:59pm</td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/11</td>
+        <td>
+            Synchronization (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=358824" target="_blank">Mesa</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/13</td>
+        <td>
+            Synchronization (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://www.usenix.org/legacy/event/osdi08/tech/full_papers/musuvathi/musuvathi.pdf"
+                target="_blank">Chess</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/18</td>
+        <td>
+            Scheduling (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=121151" target="_blank">Scheduler Activation</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/20</td>
+        <td>
+            Scheduling (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3477132.3483542" target="_blank">Linux Scheduler</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/25</td>
+        <td>
+            Memory Management (1)
+        </td>
+        <td bgcolor="#D5FFFF">
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=36181" target="_blank">Mach MM (qual paper)</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">2/27</td>
+        <td>
+            Memory Management (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3373376.3378493" target="_blank">ECPT</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">3/4</td>
+        <td>
+            File Systems (1)
+        </td>
+        <td bgcolor="#D5FFFF">
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=121137" target="_blank">LFS (qual paper)</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">3/6</td>
+        <td>
+            File Systems (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/237090.237154" target="_blank">Rio</a>
+        </td>
+        <td bgcolor="#FFCCCB">Checkpoint #1 due: 3/9 11:59pm</td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">3/11</td>
+        <td>
+            Network Stack (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-belay.pdf" target="_blank">IX</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">3/13</td>
+        <td>
+            Network Stack (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3694715.3695943" target="_blank">F&S</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center"> </td>
+        <td bgcolor="#00AA00"><font color="white"><a href="http://phdcomics.com/comics/archive.php/images/tellafriend.php?comicid=1568" target="_blank">Spring Break</a></font></td>
+        <td bgcolor="#00AA00"><font color="white">Food.  Lots of it.</font></td>
+        <td bgcolor="#00AA00"><font color="white">Sleep. Lots of it.</font></td>
+        <td></td>
+      </tr>
+
+    <tr>
+        <td align="center">3/25</td>
+        <td>
+            Virtual Machine (1)
+        </td>
+        <td bgcolor="#D5FFFF">
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=945462" target="_blank">Xen (qual paper)</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">3/27</td>
+        <td>
+            Virtual Machine (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3620665.3640358" target="_blank">DMT</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/1</td>
+        <td>
+            Container (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=3132763" target="_blank">LightVM</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/3</td>
+        <td>
+            Container (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3579371.3589069"
+                                target="_blank">MXFaaS</a>
+        </td>
+        <td bgcolor="#FFCCCB">Checkpoint #2 due: 4/6 11:59pm</td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/8</td>
+        <td>
+            Extensibility (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/224056.224077"
+                                target="_blank">SPIN</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/10</td>
+        <td>
+            Extensibility (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://github.com/rex-rs/rex/blob/main/docs/rex-paper.pdf"
+                                target="_blank">Rex</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/15</td>
+        <td>
+            Reliability (1)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/citation.cfm?id=502041" target="_blank">Bugs as deviant behavior</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/17</td>
+        <td>
+            Reliability (2)
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3477132.3483540" target="_blank">Lightweight FM</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/22</td>
+        <td>
+            Security (1)
+        </td>
+        <td>
+            KCFI
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/24</td>
+        <td>
+            Security (2)
+        </td>
+        <td>
+            <a class="paperlink"
+                            href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-baumann.pdf"
+                            target="_blank">Haven</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">4/29</td>
+        <td>
+            D.i.s.tri...buuuuuted
+        </td>
+        <td>
+            <a class="paperlink"
+                                    href="https://www.usenix.org/legacy/event/osdi04/tech/full_papers/dean/dean.pdf"
+                                    target="_blank">MapReduce</a>, 
+            <a class="paperlink" href="https://www.usenix.org/system/files/osdi18-moritz.pdf" target="_blank">Ray</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">5/1</td>
+        <td>
+            Machine Learning
+        </td>
+        <td>
+            <a class="paperlink" href="https://dl.acm.org/doi/10.1145/3600006.3613165"
+                                    target="_blank">vLLM</a>
+        </td>
+        <td>
+            Presentation and discussion
+        </td>
+        <td>
+            TBD
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">5/6</td>
+        <td>
+            Future
+        </td>
+        <td>
+            <a class="paperlink" href="https://www.cidrdb.org/cidr2022/papers/p26-li.pdf"
+                                    target="_blank">DBOS</a>
+        </td>
+        <td bgcolor="#FFCCCB">Final report due 5/7 11:59pm</td>
+        <td>
+            
+        </td>
+    </tr>
+
+</tbody></table>
+</center>
+ 
+
+    <h2>Class Participation</h2>
+
+    <p>
+        Since this is a research-based course, class participation is required.
+        We (everyone) will discuss the papers and our research progress in class. 
+        Note that your performance in class, including presentation and discussion 
+        form <b>45%</b> of your overall grade,
+        so it does matter that you both show up to class and participate in the discussion.
+    </p>
+<!--
+    <ul>
+        <li> What problem does the paper address?</li>
+        <li> How is it different from previous work, if any?</li>
+        <li> What is the approach used to solve the problem?</li>
+        <li> How does the paper support or otherwise justify its arguments and conclusions?</li>
+        <li> Was the paper, in your judgement, successful in addressing the problem?</li>
+        <li> How can I continue this work?</li>
+    </ul>
+-->
+   <h2>Research Project</h2>
+
+    <p>
+        The best way to learn is by doing. You will undertake <i>your own</i> research
+        project <b>individually</b> or <b>in a group of two, or three if it is a large project</b>.
+        A group with a size larger than two is not encouraged, but is possible if
+          you have a strong justification that the project needs more members.
+        I will provide a list of ideas to get you started thinking,
+          but I highly encourage you to pursue your own ideas
+          which typically lead to better results.
+        You will write a project report and present it at the end of the course.
+        The details of the research project is described in the following link.
+    </p>
+    <p></p>
+    <ul>
+        <li>
+            <a href="project.html" target="_blank">Project Schedule and Instructions</a>
+        </li>
+    </ul>
+    <p></p>
+    <p>
+       You can find <a href="../pub.html" target="_blank">a list of 523 projects that were
+       subsequently published in workshops, conferences, and journals</a>.
+    </p>
+
+    <p>
+      We do not release
+      information that are not opened to public to protect students' work
+      (many of which are closely connected to their thesis research).
+    </p>
+
+    <p>
+        Note: You are expected to be aware of
+        <a href="http://studentcode.illinois.edu/article1_part4_1-401.html" target="_blank">Academic
+          Integrity Guidelines</a> of the University of Illinois.
+          Any violation of the course or university policies
+          will be treated seriously, and could lead to severe repercussions.
+          Pleae don't cheat. It's not worth it.
+    </p>
+
+    <h2>Grading</h2>
+    <p>
+        There is no homework, no midterm, no final exams.
+        The course is about discussing Systems research (10%) and doing Systems research (90%).
+        Note that the Project Proposal, Checkpoint Report 1, and Checkpoint Report 2 account for 5%, 5%, and 5%, respectively.
+        <ul>
+            <li>25%: Class Participation and Presentation</li>
+            <li>20%: Paper Presentation</li>
+            <li>5%:  Project Proposal</li>
+            <li>5%:  Checkpoint Report 1</li>
+            <li>5%:  Checkpoint Report 2</li>
+            <li>40%: Final Project Report and Presentation</li>
+        </ul>
+    </p>
+    <h2>Credit</h2>
+    <p>
+        This course is designed based on CSE 221 (Graduate
+        Operating Systems) taught at University of California at San Diego
+        (where I did my PhD).
+        It was my favourite course during my grad school -- I took it and TA-ed
+        for it multiple times with different professors including
+            Geoff Voelker, Yuanyuan Zhou, and Stefan Savage.
+        They should take the credits for the course design.
+
+    </p>
+
+    <div class="footer">
+        <hr><a href="mailto:tyxu@illinois.edu">tyxu@illinois.edu</a>
+    </div>
+
+</body>
+
+</html>
